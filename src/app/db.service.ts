@@ -12,8 +12,13 @@ export class DbService {
     this.cards = af.list('cards');
   }
 
+  deleteCards() {
+    this.af.object('/cards/').remove();
+  }
+
   writeCards(cardList) {
-    this.cards.push(cardList);
+    this.deleteCards();
+    // this.cards.push(cardList);
   }
 
 }

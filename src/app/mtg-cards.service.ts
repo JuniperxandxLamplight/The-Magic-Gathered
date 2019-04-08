@@ -9,7 +9,7 @@ export class MtgCardsService {
   constructor(private http: Http) { }
 
   getMTGCardList() {
-    return this.http.get(`https://api.scryfall.com/cards?.json`);
+    return this.http.get(`https://api.scryfall.com/cards?lang=en`);
   }
 
   getMTGNextPage(nextPage) {
