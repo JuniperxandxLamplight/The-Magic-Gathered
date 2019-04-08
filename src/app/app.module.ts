@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppComponent } from './app.component';
 import { CardListComponent } from './card-list/card-list.component';
+import { SearchDataComponent } from './search-data/search-data.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -19,7 +20,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    CardListComponent
+    CardListComponent,
+    SearchDataComponent
   ],
   imports: [
     BrowserModule,
