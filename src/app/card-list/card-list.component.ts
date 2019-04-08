@@ -13,7 +13,9 @@ import { DbService } from '../db.service';
 })
 
 export class CardListComponent implements OnInit {
-  cardlist: any;
+  cardList: any;
+  hasMore: boolean = false;
+  nextCall: string;
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
@@ -21,9 +23,24 @@ export class CardListComponent implements OnInit {
 
   getMTGcards() {
     this.cardsService.getMTGCardList().subscribe(response => {
-      this.cardlist = response.json();
+      this.cardList = response.json().data;
+      this.hasMore = response.json().has_more;
+      this.nextCall = response.json().next_page;
       console.log("body", response.json().data);
+      console.log("response", response.json());
+      this.getNextPage();
     });
+  }
+
+  getNextPage(){
+    if (this.hasMore === true) {
+      this.cardsService.getMTGNextPage(this.nextCall).subscribe(response => {
+        this.cardList = response.json().data;
+        this.hasMore = response.json().has_more;
+        this.nextCall = response.json().next_page;
+        console.log("body", response.json());
+    });
+  }
   }
 
   saveMTGcards(cardlist) {

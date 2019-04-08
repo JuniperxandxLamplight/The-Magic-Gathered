@@ -12,4 +12,7 @@ export class MtgCardsService {
     return this.http.get(`https://api.scryfall.com/cards?.json`);
   }
 
+  getMTGNextPage(nextPage) {
+    return this.http.get(`${nextPage}`);
+  }
 }
