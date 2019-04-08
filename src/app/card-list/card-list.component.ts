@@ -13,10 +13,9 @@ import { DbService } from '../db.service';
 })
 
 export class CardListComponent implements OnInit {
-  cardList: any[];
+  cardPage: any[] = [];
+  cardList: any[] = [];
   hasMore: boolean = false;
-  nextCall: string = null;
-  totalCards: number;
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
@@ -24,8 +23,8 @@ export class CardListComponent implements OnInit {
 
   getMTGcards() {
     this.cardsService.getMTGCardList().subscribe(response => {
-      console.log("before first", this.nextCall);
-      this.cardList = response.json().data;
+      this.cardPage = response.json().data;
+      this.cardList.push(this.cardPage);
       console.log("begining of next call", response.json().data[0]);
       console.log("body", response.json().data);
       console.log("response", response.json());
@@ -38,11 +37,37 @@ export class CardListComponent implements OnInit {
       setTimeout( () => {
         let nextPage = `https://api.scryfall.com/cards?lang=en&page=${i}`;
         this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
-          this.cardList = response.json().data;
+          this.cardPage = response.json().data;
+          this.cardList.push(this.cardPage);
           console.log("body", response.json());
         });
       }, 100);
     }
+    setTimeout ( () => {
+      let newArray = this.combineArrays(this.cardList);
+      console.log("card list", this.cardList);
+      console.log("card list 0", this.cardList[0]);
+      console.log("newArray", newArray);
+      console.log(this.cardList.length);
+    }, 3000);
+  }
+
+//ask franz!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  combineArrays(array) {
+    let concatArr = [];
+
+    console.log('concat in', array);
+
+    array.forEach(function(arr) {
+      console.log('concat inside', arr);
+
+      concatArr.concat(arr);
+    });
+    // for (let i = 0; i < array.length; i++){
+    //   console.log("for loop", array[i]);
+    //   concatArr.concat(array[i]);
+    // }
+    console.log('concat', concatArr);
   }
 
   saveMTGcards(cardlist) {

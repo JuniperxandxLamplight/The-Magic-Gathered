@@ -18,7 +18,7 @@ export class DbService {
 
   writeCards(cardList) {
     this.deleteCards();
-    // this.cards.push(cardList);
+    this.cards.push(cardList);
   }
 
 }
