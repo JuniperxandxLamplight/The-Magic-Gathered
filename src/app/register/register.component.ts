@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
   successMessage;
   loginSuccess = null;
 
-  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder) { }
+  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -31,15 +32,15 @@ export class RegisterComponent implements OnInit {
     console.log(value);
     this.authService.doRegister(value)
     .then(res => {
-      console.log(res);
+      console.log("try register res", res);
       this.loginSuccess = true;
       this.errorMessage = "";
-      this.successMessage = "Your account has been created";
+      this.successMessage = alert("Your account has been created");
+      this.router.navigate(['/user', value.username]);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
       this.successMessage = "";
     })
   }
-
 }

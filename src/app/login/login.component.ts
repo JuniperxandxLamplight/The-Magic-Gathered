@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import {Router} from '@angular/router';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   private isLoggedIn: Boolean;
   private userName: String;
 
-  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder) {
+  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) {
     this.authService.user.subscribe(user => {
      if (user == null) {
        this.isLoggedIn = false;
@@ -34,8 +36,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
-    this.authService.login();
+  async login() {
+    await this.authService.login();
+    this.router.navigate(['/user', await this.userName]);
   }
 
   logout() {
@@ -46,6 +49,7 @@ export class LoginComponent implements OnInit {
     this.authService.emailLogin(value)
     .then(res => {
       console.log(res);
+      this.router.navigate(['/user', value.username]);
     }, err => {
       console.log(err);
     })
