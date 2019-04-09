@@ -1,3 +1,5 @@
+@import './app/mixins.scss';
+
 // Reset
 
 html, body, div, span, applet, object, iframe,
@@ -42,4 +44,25 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+// Color Classes
+
+.multi{
+	@include multi-Theme;
+}
+.R{
+	@include Red-Theme;
+}
+.U{
+	@include Blue-Theme;
+}
+.W{
+	@include White-Theme;
+}
+.G{
+	@include Green-Theme;
+}
+.B{
+	@include Black-Theme;
 }

@@ -33,8 +33,23 @@ img{
   p{
     display: inline-block;
     margin: 5px 0 5px 15px;
-    padding: 5px 7px;;
-    background-color: lightgray;
+    padding: 5px 7px;
     border-radius: 100px;
+  }
+}
+.addButtons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  button{
+    font-size: 1.5rem;
+    background-color: lightgray;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+  }
+  button:hover{
+    background-color: darkgray;
   }
 }

@@ -2,51 +2,46 @@
 <div class="details">
   <div class="left">
     <h5>Name</h5>
-    <p>Nicol Bolas, God-Pharaoh</p>
+    <p [className]="color(Test)" [className]="color(Test)">{{Test.name}}</p>
   </div>
   <div class="right">
     <h5>Rarity</h5>
-    <p>Mythic Rare</p>
+    <p [className]="color(Test)">{{Test.rarity}}</p>
   </div>
   <div>
     <h5>Colors</h5>
-    <p>Blue, Red, Black</p>
+    <p [className]="color(Test)">{{Test.colors}}</p>
   </div>
   <div id="set" class="right">
     <h5>Set</h5>
-    <p>Hour of Devistation</p>
+    <p [className]="color(Test)">{{Test.set_name}}</p>
   </div>
   <div class="left">
     <h5>Mana Cost</h5>
-    <p>4 + 1 blue + 1 black + 1 red</p>
+    <p [className]="color(Test)">{{Test.mana_cost}}</p>
   </div>
   <div class="right">
     <h5>Current Price</h5>
-    <p>$.75</p>
+    <p [className]="color(Test)">{{Test.prices.usd}}</p>
   </div>
   <div class="left powerTough">
     <div>
       <h5>Power</h5>
-      <p>7</p>
+      <p [className]="color(Test)">{{Test.power}}</p>
     </div>
     <div class="right">
       <h5>Toughness</h5>
-      <p>7</p>
+      <p [className]="color(Test)">{{Test.toughness}}</p>
     </div>
   </div>
   <div class="left large">
     <h5>Type</h5>
-    <p>Plainswalker - Bolas</p>
+    <p [className]="color(Test)">{{Test.type_line}}</p>
   </div>
   <div class="large">
-    <h5>Abilities</h5>
-    <p>(card abilities) Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+    <h5>Text</h5>
+    <p [className]="color(Test)">{{Test.oracle_text}}</p>
   </div>
-  <div class="large">
-    <h5>Flavor Text</h5>
-    <p>(card flavor text)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  </div>
-</div>
 <div class="addButtons">
   <button type="button" name="button">Add to Library</button>
   <button type="button" name="button">Add to Deck</button>
