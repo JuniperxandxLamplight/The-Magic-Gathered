@@ -1,0 +1,26 @@
+button{
+  display: block;
+  margin: 10px auto;
+  padding: 7px 10px;
+  font-size: 1.5rem;
+  background-color: lightgray;
+  border: none;
+  border-radius: 10px;
+}
+button:hover{
+  background-color: darkgray;
+}
+form{
+  width: 50%;
+  margin: 0 auto;
+}
+div{
+  margin: 20px auto;
+}
+input{
+  width: 96%;
+  padding: 7px 2%;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  box-shadow: inset 0px 3px 7px lightgray;
+}
