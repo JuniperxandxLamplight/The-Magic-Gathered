@@ -15,8 +15,33 @@ export class AuthenticationService {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  emailLogin(value) {
+
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(value.email, value.password).then(res => {
+        resolve(res);
+      }, err => reject(err))
+    });
+  }
+
+
   logout() {
     this.afAuth.auth.signOut();
+  }
+
+  doRegister(value){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(value.email, value.password).then( (user) => {
+        console.log("in auth", user)
+        if(user){
+          user.updateProfile({
+            displayName: value.username
+          }).then(res => {
+            resolve(res);
+          }, err => reject(err))
+        };
+      });
+    });
   }
 
 }
