@@ -1,0 +1,12 @@
+button{
+  display: block;
+  margin: 10px auto;
+  padding: 7px 10px;
+  font-size: 1.5rem;
+  background-color: lightgray;
+  border: none;
+  border-radius: 10px;
+}
+button:hover{
+  background-color: darkgray;
+}
