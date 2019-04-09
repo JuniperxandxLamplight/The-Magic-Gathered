@@ -1,0 +1,40 @@
+img{
+  display: block;
+  width: 80vw;
+  height: auto;
+  margin: 1vh auto;
+}
+.details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  div{
+    padding: 0 1%;
+  }
+  .large{
+    width: 75%;
+    p{
+      border-radius: 20px;
+    }
+  }
+  .right{
+    width: 35%;
+    text-align: right;
+  }
+  .left{
+    width: 60%;
+  }
+  .powerTough{
+    display: flex;
+  }
+  #set{
+    width: 55%;
+  }
+  p{
+    display: inline-block;
+    margin: 5px 0 5px 15px;
+    padding: 5px 7px;;
+    background-color: lightgray;
+    border-radius: 100px;
+  }
+}

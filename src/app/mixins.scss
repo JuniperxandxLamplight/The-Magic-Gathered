@@ -1,0 +1,30 @@
+@mixin multiTheme() {
+  background-color: #CCBA1A;
+  color: #907226;
+  border-color: #907226;
+}
+@mixin W-Theme() {
+  background-color: #B0B2B2;
+  color: white;
+  border-color: #5F5F5F;
+}
+@mixin U-Theme() {
+  background-color: #84A6FF;
+  color: #264490;
+  border-color: #264490;
+}
+@mixin G-Theme() {
+  background-color: #4BD748;
+  color: #007805;
+  border-color: #007805;
+}
+@mixin R-Theme() {
+  background-color: #D73838;
+  color: #7E0000;
+  border-color: #7E0000;
+}
+@mixin B-Theme() {
+  background-color: #303030;
+  color: #B9B9B9;
+  border-color: #000000;
+}
