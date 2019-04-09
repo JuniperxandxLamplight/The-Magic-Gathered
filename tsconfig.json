@@ -16,6 +16,8 @@
       "es2016",
       "dom"
     ],
-     "types": [ "firebase" ]
+     "types": [ "firebase" ],
+     "experimentalDecorators": true,
+     "allowJs": true
   }
 }

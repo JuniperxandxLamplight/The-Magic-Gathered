@@ -12,6 +12,22 @@
       <li *ngIf ="!isLoggedIn"> \\if the user isn’t logged in, we’ll have an event binding to login.
         <a (click)="login()">Log in</a>
       </li>
+      <li>
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+          <label>Email address</label>
+          <input type="email" formControlName="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password" required>
+          <label class="error">{{errorMessage}}</label>
+          <label class="success">{{successMessage}}</label>
+        </div>
+        <button type="submit" (click)="emailLogin(registerForm.value)" class="btn btn-default">Login</button>
+        </form>
+      </li>
+
     </ul>
   </div>
 </nav>
