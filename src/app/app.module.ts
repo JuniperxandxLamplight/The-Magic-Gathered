@@ -13,6 +13,8 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { SearchDataComponent } from './search-data/search-data.component';
 
+import { WINDOW_PROVIDERS } from "./window.service";
+
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
@@ -34,9 +36,9 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ WINDOW_PROVIDERS ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

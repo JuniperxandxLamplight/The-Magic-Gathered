@@ -1,18 +1,78 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterButton } from '../models/search-data-buttons.model'
+import { HostListener} from "@angular/core";
+
+//scroll tips addition
+import { Inject } from "@angular/core";
+import { DOCUMENT } from "@angular/platform-browser";
+import { WINDOW } from "../window.service";
+
+
+
+
+
+// var prevScrollpos = window.pageYOffset;
+// window.onscroll = function() {
+//   var currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos) {
+//     document.getElementById("filters").style.top = "0";
+//   } else {
+//     document.getElementById("filters").style.top = "-50px";
+//   }
+//   prevScrollpos = currentScrollPos;
+// }
 
 @Component({
   selector: 'app-search-data',
   templateUrl: './search-data.component.html',
   styleUrls: ['./search-data.component.scss']
 })
+
 export class SearchDataComponent implements OnInit {
   searchTerms: any[] = [];
 
-  constructor() { }
+//scroll tips addition
+  public navIsFixed: boolean = false;
+
+  public numberScrolls: number[] = [0];
+
+  constructor(
+  @Inject(DOCUMENT) private document: Document,
+  @Inject(WINDOW) private window: Window) { }
 
   ngOnInit() {
   }
+
+//scroll tips addition
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+
+   this.numberScrolls.push(this.window.pageYOffset);
+
+   const lastScroll = this.numberScrolls.shift();
+
+   if (lastScroll > this.numberScrolls[0]) {
+     console.log("scroll up")
+   } else {
+     console.log("scroll down")
+   }
+
+
+   console.log(this.numberScrolls)
+   console.log(lastScroll)
+ }
+
+
+    // if (this.window.pageYOffset >= 0) {
+    //   console.log(this.window.pageYOffset)
+    // }
+    // else if (document.body.scrollTop <= 0) {
+    //   console.log("scrolling up")
+    // }
+
+
+
+
 
   addSearchFilter(item){
     this.searchTerms.push(item);
@@ -36,5 +96,8 @@ export class SearchDataComponent implements OnInit {
     new FilterButton("sorcery", "../../assets/images/sorcery_symbol.svg"),
     new FilterButton("instant", "../../assets/images/instant_symbol.svg")
   ]
+
+
+
 
 }
