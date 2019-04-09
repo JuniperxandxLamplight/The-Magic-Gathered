@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Eczar');
+
+* {
+  border: 1px solid red;
+}
+
+* {
+  font-family: 'Eczar';
+  color: white;
+}
+
+h2 {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  display: flex;
+}
+
+.sort-by {
+  background-color: #7B7B7B;
+  padding: 0;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D4D4D4;
+}
+
+.color-buttons,
+.type-buttons {
+  display: grid;
+  margin-bottom: 5px;
+}
+
+.color-buttons {
+  grid-template-areas: "a a a a a";
+  grid-gap: 10px;
+}
+
+.type-buttons {
+  grid-template-areas: "a a a a a a a";
+  grid-gap: 7px;
+}
+
+.color-btn,
+.type-btn {
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #7B7B7B;
+  box-shadow: inset 0 0 4px 0 rgba(0,0,0,0.25);
+  margin: 0;
+  padding: 0;
+  img {
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.color-btn {
+  height: 57px;
+  width: 57px;
+}
+
+.type-btn {
+  height: 40px;
+  width: 40px;
+}
