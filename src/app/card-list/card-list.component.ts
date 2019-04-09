@@ -20,10 +20,14 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     let timerId = setTimeout(function tick() {
       console.log('tick');
       timerId = setTimeout(tick, 5000);
     }, 5000);
+=======
+
+>>>>>>> master
   }
 
   getMTGcards() {
