@@ -1,0 +1,55 @@
+img{
+  display: block;
+  width: 80vw;
+  height: auto;
+  margin: 1vh auto;
+}
+.details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  div{
+    padding: 0 1%;
+  }
+  .large{
+    width: 75%;
+    p{
+      border-radius: 20px;
+    }
+  }
+  .right{
+    width: 35%;
+    text-align: right;
+  }
+  .left{
+    width: 60%;
+  }
+  .powerTough{
+    display: flex;
+  }
+  #set{
+    width: 55%;
+  }
+  p{
+    display: inline-block;
+    margin: 5px 0 5px 15px;
+    padding: 5px 7px;
+    border-radius: 100px;
+  }
+}
+.addButtons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  button{
+    font-size: 1.5rem;
+    background-color: lightgray;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+  }
+  button:hover{
+    background-color: darkgray;
+  }
+}
