@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right">
       <li *ngIf="isLoggedIn">
-        <a>{{userName}}</a>
+        <a>{{userName}} is already logged in</a>
         <button (click)="logout()">Log out</button>
       </li>
       <li *ngIf ="!isLoggedIn">
@@ -22,9 +22,8 @@
           </div>
           <button type="submit" (click)="emailLogin(registerForm.value)" class="btn btn-default">Login</button>
         </form>
-        <button class="btn btn-default">Login</button>
+        <button routerLink="/register" class="btn btn-default">Sign Up with Email</button>
       </li>
-
     </ul>
   </div>
 </nav>
