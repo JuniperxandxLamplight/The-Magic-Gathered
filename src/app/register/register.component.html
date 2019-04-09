@@ -1,4 +1,8 @@
 <form [formGroup]="registerForm" *ngIf="true">
+  <div class="form-group">
+    <label>Username</label>
+    <input type="email" formControlName="username" class="form-control" required>
+  </div>
    <div class="form-group">
      <label>Email address</label>
      <input type="email" formControlName="email" class="form-control" required>
@@ -9,5 +13,5 @@
      <label class="error">{{errorMessage}}</label>
      <label class="success">{{successMessage}}</label>
    </div>
-   <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+   <button type="submit" routerLink="user" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
 </form>

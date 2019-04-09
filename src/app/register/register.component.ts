@@ -15,13 +15,15 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   errorMessage;
   successMessage;
+  loginSuccess = null;
 
   constructor(public authService: AuthenticationService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: '',
-      password: ''
+      password: '',
+      username: ''
     });
   }
 
@@ -30,6 +32,7 @@ export class RegisterComponent implements OnInit {
     this.authService.doRegister(value)
     .then(res => {
       console.log(res);
+      this.loginSuccess = true;
       this.errorMessage = "";
       this.successMessage = "Your account has been created";
     }, err => {
