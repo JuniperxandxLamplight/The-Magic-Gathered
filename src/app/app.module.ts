@@ -14,6 +14,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { SearchDataComponent } from './search-data/search-data.component';
+import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
 
 export const firebaseConfig = {
@@ -30,6 +31,7 @@ export const firebaseConfig = {
     UserComponent,
     LoginComponent,
     SearchDataComponent,
+    DetailsComponent
     RegisterComponent
   ],
   imports: [
