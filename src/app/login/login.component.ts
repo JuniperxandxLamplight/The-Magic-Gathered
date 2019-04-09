@@ -36,9 +36,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  async login() {
-    await this.authService.login();
-    this.router.navigate(['/user', await this.userName]);
+  login() {
+    this.authService.login();
+    this.authService.user.subscribe(user => {
+     if (this.isLoggedIn === true) {
+       this.router.navigate(['/user', this.userName]);
+     }
+   });
   }
 
   logout() {
@@ -49,9 +53,13 @@ export class LoginComponent implements OnInit {
     this.authService.emailLogin(value)
     .then(res => {
       console.log(res);
-      this.router.navigate(['/user', value.username]);
     }, err => {
       console.log(err);
     })
+    this.authService.user.subscribe(user => {
+     if (this.isLoggedIn === true) {
+       this.router.navigate(['/user', this.userName]);
+     }
+   });
   }
 }
