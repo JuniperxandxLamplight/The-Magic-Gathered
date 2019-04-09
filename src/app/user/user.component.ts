@@ -16,8 +16,9 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout() {
-    this.authService.logout();
+  async logout() {
+    await this.authService.logout();
+    await this.router.navigate(['/login']);
   }
 
 }
