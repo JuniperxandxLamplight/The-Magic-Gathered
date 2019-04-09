@@ -21,7 +21,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       email: '',
-      password: ''
+      password: '',
+      username: ''
     });
   }
 
