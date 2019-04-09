@@ -8,6 +8,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { routing } from './app.routing';
+import { AuthGuard } from './auth-guard.service';
+import { AuthenticationService } from './authentication.service';
 
 import { AppComponent } from './app.component';
 import { CardListComponent } from './card-list/card-list.component';
@@ -44,7 +46,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     routing
   ],
-  providers: [],
+  providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
