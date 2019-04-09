@@ -31,7 +31,7 @@ export const firebaseConfig = {
     UserComponent,
     LoginComponent,
     SearchDataComponent,
-    DetailsComponent
+    DetailsComponent,
     RegisterComponent
   ],
   imports: [
