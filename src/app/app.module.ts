@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
+import { SearchDataComponent } from './search-data/search-data.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -24,7 +25,8 @@ export const firebaseConfig = {
     AppComponent,
     CardListComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    SearchDataComponent
   ],
   imports: [
     BrowserModule,
