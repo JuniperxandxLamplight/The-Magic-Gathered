@@ -20,9 +20,7 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
-    schedule.scheduleJob('29 * * * * *', () => {
-      console.log('30 seconds');
-    });
+
   }
 
   getMTGcards() {
