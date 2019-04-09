@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { DbService } from '../db.service';
+import { schedule } from 'node-schedule';
 
 @Component({
   selector: 'app-card-list',
@@ -19,15 +20,15 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
+    schedule.scheduleJob('29 * * * * *', () => {
+      console.log('30 seconds');
+    });
   }
 
   getMTGcards() {
     this.cardsService.getMTGCardList().subscribe(response => {
       this.cardPage = response.json().data;
       this.cardList.push(this.cardPage);
-      console.log("begining of next call", response.json().data[0]);
-      console.log("body", response.json().data);
-      console.log("response", response.json());
       this.getNextPage();
     });
   }
@@ -39,40 +40,25 @@ export class CardListComponent implements OnInit {
         this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
           this.cardPage = response.json().data;
           this.cardList.push(this.cardPage);
-          console.log("body", response.json());
         });
       }, 100);
     }
     setTimeout ( () => {
-      let newArray = this.combineArrays(this.cardList);
-      console.log("card list", this.cardList);
-      console.log("card list 0", this.cardList[0]);
-      console.log("newArray", newArray);
-      console.log(this.cardList.length);
+      let allPages = [].concat.apply([], this.cardList);
+      console.log(allPages);
     }, 3000);
-  }
-
-//ask franz!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  combineArrays(array) {
-    let concatArr = [];
-
-    console.log('concat in', array);
-
-    array.forEach(function(arr) {
-      console.log('concat inside', arr);
-
-      concatArr.concat(arr);
-    });
-    // for (let i = 0; i < array.length; i++){
-    //   console.log("for loop", array[i]);
-    //   concatArr.concat(array[i]);
-    // }
-    console.log('concat', concatArr);
   }
 
   saveMTGcards(cardlist) {
     this.dbService.writeCards(cardlist);
   }
+
+  // async updateDB() {
+  //   schedule.this.getMTGcards('59 * * * * *', async () => {
+  //     let cardList = this.getMTGcards();
+  //     await this.saveMTGcards(cardList);
+  //   });
+  // }
 
 
 
