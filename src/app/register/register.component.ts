@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   addUser(name) {
-    let newUser = new User(name, [], []);
+    let newUser = new User(name, [""], [""]);
     console.log("newUser", newUser.library);
     this.userService.addUserToDB(newUser);
     // let allUserNames: any[] = [];

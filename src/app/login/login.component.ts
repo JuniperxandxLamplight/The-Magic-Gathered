@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
         console.log("notNew");
       }
       else{
-        let newUser = new User(this.username, [], []);
+        let newUser = new User(this.username, [""], [""]);
         console.log("newUser", newUser.library);
         this.userService.addUserToDB(newUser);
       }

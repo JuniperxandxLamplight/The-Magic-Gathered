@@ -35,6 +35,14 @@ export class UserService {
     this.users.push(newUser);
   }
 
+  addCardToUserLibrary(newCard) {
+    this.getCurrentUser();
+    console.log("new Card", newCard);
+    console.log("currentUser", this.currentUser);
+    console.log("library", this.currentUser.library);
+    this.currentUser.library.push(newCard);
+  }
+
   removeUser(){}
 
 
