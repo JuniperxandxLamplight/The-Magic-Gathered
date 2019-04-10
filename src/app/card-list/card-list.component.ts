@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { DbService } from '../db.service';
-import { schedule } from 'node-schedule';
+
 
 @Component({
   selector: 'app-card-list',
@@ -20,14 +20,12 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
-<<<<<<< HEAD
+
     let timerId = setTimeout(function tick() {
       console.log('tick');
       timerId = setTimeout(tick, 5000);
     }, 5000);
-=======
 
->>>>>>> master
   }
 
   getMTGcards() {
