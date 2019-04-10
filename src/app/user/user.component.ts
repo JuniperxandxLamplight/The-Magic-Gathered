@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { UserService } from '../user.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import * as firebase from "firebase";
 
 
 
@@ -12,16 +13,20 @@ import {Router} from '@angular/router';
   providers: [AuthenticationService, UserService]
 })
 export class UserComponent implements OnInit {
+  currentUser;
 
-  constructor(public authService: AuthenticationService, private router: Router) { }
+  constructor(public authService: AuthenticationService, private router: Router, public userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  ngDoCheck() {
+    this.currentUser = firebase.auth().currentUser;
+    console.log("current user", this.currentUser);
   }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-
 }

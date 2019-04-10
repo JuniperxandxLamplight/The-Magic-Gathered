@@ -17,6 +17,7 @@ import { UserService } from '../user.service'
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   user;
+  public currentUser: User;
   private isLoggedIn: Boolean;
   private username: string;
   users: FirebaseListObservable<any[]>;
