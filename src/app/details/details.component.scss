@@ -43,13 +43,17 @@ img{
   justify-content: space-around;
   margin: 20px 0;
   button{
+    display: block;
+    margin: 20px auto;
+    padding: 7px 10px;
     font-size: 1.5rem;
     background-color: lightgray;
     border: none;
     border-radius: 10px;
-    padding: 7px 10px;
+    box-shadow: 0px  10px 15px gray;
   }
   button:hover{
-    background-color: darkgray;
+    color: white;
+    background-color: gray;
   }
 }

@@ -24,6 +24,24 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
   }
 
+  colorTranslate(card){
+    let colors:any[] = [];
+    for(let i=0; i<card.colors.length; i++){
+      if(card.colors[i] === "R"){
+        colors.push('Red');
+      } else if(card.colors[i] === "W"){
+        colors.push('White');
+      } else if(card.colors[i] === "U"){
+        colors.push('Blue');
+      } else if(card.colors[i] === "G"){
+        colors.push('Green');
+      } else if(card.colors[i] === "B"){
+        colors.push('Black');
+      }
+    }
+    return colors;
+  }
+
   color(card){
     let htmlClass: string;
     if(card.colors[1]){
