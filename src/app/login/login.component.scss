@@ -1,28 +1,31 @@
 button{
   display: block;
-  margin: 10px auto;
+  margin: 20px auto;
   padding: 7px 10px;
   font-size: 1.5rem;
   background-color: lightgray;
   border: none;
   border-radius: 10px;
+  box-shadow: 0px  10px 15px gray;
 }
 button:hover{
-  background-color: darkgray;
+  color: white;
+  background-color: gray;
 }
 form{
   width: 50%;
   margin: 0 auto;
 }
 div{
-  margin: 20px auto;
+  margin: 25px auto;
 }
 input{
-  width: 96%;
-  padding: 7px 2%;
+  width: 90%;
+  padding: 7px 5%;
   border-radius: 10px;
   border: 1px solid lightgray;
-  box-shadow: inset 0px 3px 7px lightgray;
+  box-shadow: inset 0px 3px 7px lightgray,
+  0px  10px 15px gray;
 }
 .hidden{
   display: none;
