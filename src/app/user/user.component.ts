@@ -21,11 +21,15 @@ export class UserComponent implements OnInit {
   }
 
   ngDoCheck() {
-    
+
   }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  getCurrentUserOb() {
+    this.userService.getCurrentUser();
   }
 }
