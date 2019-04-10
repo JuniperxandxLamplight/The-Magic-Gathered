@@ -19,6 +19,8 @@ import { SearchDataComponent } from './search-data/search-data.component';
 import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
 
+import { WINDOW_PROVIDERS } from "./window.service";
+
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
@@ -44,9 +46,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    routing
+    routing    
   ],
-  providers: [AuthGuard, AuthenticationService],
+  providers: [AuthGuard, AuthenticationService, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
