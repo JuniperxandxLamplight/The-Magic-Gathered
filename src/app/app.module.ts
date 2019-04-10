@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { SearchDataComponent } from './search-data/search-data.component';
 import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
+import { DeckListComponent } from './deck-list/deck-list.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     LoginComponent,
     SearchDataComponent,
     DetailsComponent,
-    RegisterComponent
+    RegisterComponent,
+    DeckListComponent
   ],
   imports: [
     BrowserModule,
