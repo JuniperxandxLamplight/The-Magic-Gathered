@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Eczar');
+
+// * {
+//   border: 1px solid red;
+// }
+
+* {
+  font-family: 'Eczar';
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  display: flex;
+}
+
+.header,
+.search-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D4D4D4;
+  position: fixed;
+}
+
+.header {
+  display: flex;
+  width: 100vw;
+}
+
+.search-body {
+  margin-top: 70px;
+  position: fixed;
+  border-bottom: 1px solid #7B7B7B;
+}
+
+.search {
+  color: black;
+  margin-bottom: 10px;
+  input[type="text"] {
+    font-size: 16px;
+    padding-top: 4px;
+    padding-bottom: 0;
+    padding-left: 30px;
+    line-height: 33px;
+    width: 290px;
+    border-radius: 5px;
+    border: black solid 0px;
+  }
+}
+
+.search-icon {
+  position: absolute;
+  margin-top: 9px;
+  margin-left: 5px;
+
+}
+
+
+.sort-by {
+  display: flex;
+  background-color: #7B7B7B;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.drop-arrow {
+  width: 20px;
+  height: 20px;
+  margin-left: .5em;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: #D4D4D4;
+  margin: 0;
+  width: 100vw;
+  animation-name: navimate;
+  transition: 0.3s;
+}
+
+.transform {
+  display: flex;
+}
+
+.transform-active {
+  display: none;
+}
+
+
+.color-buttons,
+.type-buttons {
+  display: grid;
+  margin-bottom: 5px;
+}
+
+.color-buttons {
+  grid-template-areas: "a a a a a";
+  grid-gap: 10px;
+}
+
+.type-buttons {
+  grid-template-areas: "a a a a a a a";
+  grid-gap: 7px;
+}
+
+.color-btn,
+.type-btn {
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #7B7B7B;
+  box-shadow: inset 0 0 4px 0 rgba(0,0,0,0.25);
+  margin: 0;
+  padding: 0;
+  img {
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.color-btn {
+  height: 57px;
+  width: 57px;
+}
+
+.type-btn {
+  height: 40px;
+  width: 40px;
+}
+
+.lorem {
+  background-color: pink;
+}
