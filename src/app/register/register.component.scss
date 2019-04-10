@@ -17,16 +17,12 @@ form{
   margin: 0 auto;
 }
 div{
-  margin: 25px auto;
+  margin: 20px auto;
 }
 input{
-  width: 90%;
-  padding: 7px 5%;
+  width: 96%;
+  padding: 7px 2%;
   border-radius: 10px;
   border: 1px solid lightgray;
-  box-shadow: inset 0px 3px 7px lightgray,
-  0px  10px 15px gray;
-}
-.hidden{
-  display: none;
+  box-shadow: inset 0px 3px 7px lightgray;
 }

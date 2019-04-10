@@ -1,0 +1,17 @@
+
+<!-- This is a reactive form for registration with an email login (including username). The  div form groups are not important for content but the [formGroup] and input details are. -->
+<form [formGroup]="registerForm" *ngIf="true">
+  <div>
+    <input type="email" formControlName="username" placeholder="username" required>
+  </div>
+   <div>
+     <input type="email" formControlName="email" placeholder="email" required>
+   </div>
+   <div>
+     <input type="password" formControlName="password" placeholder="password" equired>
+     <label class="error">{{errorMessage}}</label>
+     <label class="success">{{successMessage}}</label>
+   </div>
+   <button type="submit" (click)="tryRegister(registerForm.value)">Register</button>
+</form>
+<button routerLink="/login">Go Back to Login Page</button>
