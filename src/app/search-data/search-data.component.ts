@@ -9,19 +9,6 @@ import { WINDOW } from "../window.service";
 
 
 
-
-
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-//   var currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     document.getElementById("filters").style.top = "0";
-//   } else {
-//     document.getElementById("filters").style.top = "-50px";
-//   }
-//   prevScrollpos = currentScrollPos;
-// }
-
 @Component({
   selector: 'app-search-data',
   templateUrl: './search-data.component.html',
@@ -31,10 +18,15 @@ import { WINDOW } from "../window.service";
 export class SearchDataComponent implements OnInit {
   searchTerms: any[] = [];
 
+
+
 //scroll tips addition
   public navIsFixed: boolean = false;
 
   public numberScrolls: number[] = [0];
+
+  public trans: string = "transform";
+
 
   constructor(
   @Inject(DOCUMENT) private document: Document,
@@ -52,51 +44,57 @@ export class SearchDataComponent implements OnInit {
    const lastScroll = this.numberScrolls.shift();
 
    if (lastScroll > this.numberScrolls[0]) {
-     console.log("scroll up")
+     this.trans = "transform-active"
+
    } else {
-     console.log("scroll down")
+     this.trans = "transform"
+     // console.log(trans)
    }
 
 
-   console.log(this.numberScrolls)
-   console.log(lastScroll)
- }
-
-
-    // if (this.window.pageYOffset >= 0) {
-    //   console.log(this.window.pageYOffset)
-    // }
-    // else if (document.body.scrollTop <= 0) {
-    //   console.log("scrolling up")
-    // }
-
-
-
-
-
-  addSearchFilter(item){
-    this.searchTerms.push(item);
-    console.log(this.searchTerms)
   }
 
+
+
+
+
   colorBtns = [
-    new FilterButton("white", "../../assets/images/white_symbol.svg"),
-    new FilterButton("green", "../../assets/images/green_symbol.svg"),
-    new FilterButton("red", "../../assets/images/red_symbol.svg"),
-    new FilterButton("blue", "../../assets/images/blue_symbol.svg"),
-    new FilterButton("black", "../../assets/images/black_symbol.svg"),
+    new FilterButton("white", "../../assets/images/white_symbol.svg", 0),
+    new FilterButton("green", "../../assets/images/green_symbol.svg", 1),
+    new FilterButton("red", "../../assets/images/red_symbol.svg", 2),
+    new FilterButton("blue", "../../assets/images/blue_symbol.svg", 3),
+    new FilterButton("black", "../../assets/images/black_symbol.svg", 4),
   ]
 
   typeBtns = [
-    new FilterButton("artifact", "../../assets/images/artifact_symbol.svg"),
-    new FilterButton("creature", "../../assets/images/creature_symbol.svg"),
-    new FilterButton("enchantment", "../../assets/images/enchantment_symbol.svg"),
-    new FilterButton("land", "../../assets/images/land_symbol.svg"),
-    new FilterButton("planeswalker", "../../assets/images/planeswalker_symbol.svg"),
-    new FilterButton("sorcery", "../../assets/images/sorcery_symbol.svg"),
-    new FilterButton("instant", "../../assets/images/instant_symbol.svg")
+    new FilterButton("artifact", "../../assets/images/artifact_symbol.svg", 0),
+    new FilterButton("creature", "../../assets/images/creature_symbol.svg", 1),
+    new FilterButton("enchantment", "../../assets/images/enchantment_symbol.svg", 2),
+    new FilterButton("land", "../../assets/images/land_symbol.svg", 3),
+    new FilterButton("planeswalker", "../../assets/images/planeswalker_symbol.svg", 4),
+    new FilterButton("sorcery", "../../assets/images/sorcery_symbol.svg", 5),
+    new FilterButton("instant", "../../assets/images/instant_symbol.svg", 6)
   ]
 
+  addSearchFilter(item, id){
+
+    if (this.colorBtns[id].value == false) {
+      this.colorBtns[id].value = true
+    } else {
+      this.colorBtns[id].value = false
+    }
+    console.log(this.colorBtns[id].name, this.colorBtns[id].value)
+    this.searchTerms.push(item);
+
+    // if (this.typeBtns[id].value == false) {
+    //   this.typeBtns[id].value = true
+    // } else {
+    //   this.typeBtns[id].value = false
+    // }
+    // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
+    // this.searchTerms.push(item);
+
+  }
 
 
 

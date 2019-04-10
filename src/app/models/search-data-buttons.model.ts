@@ -1,3 +1,4 @@
 export class FilterButton {
-  constructor(public name: string, public image: string) {}
+  value: boolean = false;
+  constructor(public name: string, public image: string, public id: number) {}
 }
