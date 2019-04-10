@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from "firebase";
+
 
 @Component({
   selector: 'app-details',
@@ -23,8 +25,6 @@ export class DetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.currentUser = firebase.auth().currentUser;
-    console.log("current user", this.currentUser);
   }
 
   addCardToDeck() {

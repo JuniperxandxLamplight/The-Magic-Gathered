@@ -20,6 +20,7 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
+    
   }
 
   getMTGcards() {

@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
    });
   }
 
-  //make this method actually check all username keys
+  // make this method actually check all username keys
   addUser() {
     let allUserNames: any[] = [];
     this.userService.getUsers().subscribe( list => {

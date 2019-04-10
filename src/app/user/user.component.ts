@@ -21,8 +21,7 @@ export class UserComponent implements OnInit {
   }
 
   ngDoCheck() {
-    this.currentUser = firebase.auth().currentUser;
-    console.log("current user", this.currentUser);
+    
   }
 
   logout() {
