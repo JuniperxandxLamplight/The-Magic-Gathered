@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   successMessage;
   loginSuccess = null;
 
-  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router, private loginAdd: LoginComponent) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
       this.loginSuccess = true;
       this.errorMessage = "";
       this.successMessage = alert("Your account has been created");
+      this.loginAdd.addUser();
       this.router.navigate(['/user', value.username]);
     }, err => {
       console.log(err);

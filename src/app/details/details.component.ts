@@ -18,10 +18,21 @@ export class DetailsComponent implements OnInit {
     toughness: "1",
     oracle_text: "Menace\nAt the beginning of your precombat main ..."
   }
+  currentUser;
 
   constructor() { }
 
   ngOnInit() {
+    this.currentUser = firebase.auth().currentUser;
+    console.log("current user", this.currentUser);
+  }
+
+  addCardToDeck() {
+    console.log("add card to deck");
+  }
+
+  addCardToLibrary() {
+    console.log("add card to library");
   }
 
   colorTranslate(card){

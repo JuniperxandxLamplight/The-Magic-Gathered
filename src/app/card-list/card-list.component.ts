@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { DbService } from '../db.service';
-import { schedule } from 'node-schedule';
+
 
 @Component({
   selector: 'app-card-list',
