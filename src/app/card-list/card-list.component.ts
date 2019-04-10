@@ -20,9 +20,14 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
-    schedule.scheduleJob('29 * * * * *', () => {
-      console.log('30 seconds');
-    });
+<<<<<<< HEAD
+    let timerId = setTimeout(function tick() {
+      console.log('tick');
+      timerId = setTimeout(tick, 5000);
+    }, 5000);
+=======
+
+>>>>>>> master
   }
 
   getMTGcards() {
@@ -52,14 +57,5 @@ export class CardListComponent implements OnInit {
   saveMTGcards(cardlist) {
     this.dbService.writeCards(cardlist);
   }
-
-  // async updateDB() {
-  //   schedule.this.getMTGcards('59 * * * * *', async () => {
-  //     let cardList = this.getMTGcards();
-  //     await this.saveMTGcards(cardList);
-  //   });
-  // }
-
-
 
 }
