@@ -45,6 +45,15 @@ button {
   margin-top: 70px;
   position: fixed;
   border-bottom: 1px solid #7B7B7B;
+  transition: display 5s ease;
+}
+
+#transform {
+  display: flex;
+}
+
+#transform-active {
+  display: none;
 }
 
 .search {
@@ -93,16 +102,7 @@ button {
   // background-color: #D4D4D4;
   margin: 0;
   width: 100vw;
-  animation-name: navimate;
-  transition: 0.3s;
-}
-
-.transform {
-  display: flex;
-}
-
-.transform-active {
-  display: none;
+  // animation-name: navimate;
 }
 
 
