@@ -44,19 +44,15 @@ export class SearchDataComponent implements OnInit {
    const lastScroll = this.numberScrolls.shift();
 
    if (lastScroll > this.numberScrolls[0]) {
-     this.trans = "transform-active"
-
-   } else {
      this.trans = "transform"
+   } else {
+     this.trans = "transform-active"
+     // console.log(this.window.pageYOffset)
      // console.log(trans)
    }
 
 
   }
-
-
-
-
 
   colorBtns = [
     new FilterButton("white", "../../assets/images/white_symbol.svg", 0),
@@ -80,21 +76,56 @@ export class SearchDataComponent implements OnInit {
 
     if (this.colorBtns[id].value == false) {
       this.colorBtns[id].value = true
+      this.searchTerms.push(item);
     } else {
       this.colorBtns[id].value = false
-    }
-    console.log(this.colorBtns[id].name, this.colorBtns[id].value)
-    this.searchTerms.push(item);
+      for( var i = 0; i < this.searchTerms.length; i++){
+       if (this.searchTerms[i] === item) {
+          this.searchTerms.splice(i, 1);
+          }
+        }
+      }
 
-    // if (this.typeBtns[id].value == false) {
-    //   this.typeBtns[id].value = true
-    // } else {
-    //   this.typeBtns[id].value = false
-    // }
-    // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
+    console.log(this.searchTerms)
+    // console.log(this.colorBtns[id].name, this.colorBtns[id].value)
     // this.searchTerms.push(item);
 
   }
+
+  addSearchFilterTyp(item, id){
+
+    if (this.typeBtns[id].value == false) {
+      this.typeBtns[id].value = true
+      this.searchTerms.push(item);
+    } else {
+      this.typeBtns[id].value = false
+      for( var i = 0; i < this.searchTerms.length; i++){
+       if (this.searchTerms[i] === item) {
+          this.searchTerms.splice(i, 1);
+          }
+        }
+      }
+
+    console.log(this.searchTerms)
+
+
+
+
+
+    // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
+    // this.searchTerms.push(item);
+    // console.log(this.searchTerms)
+
+  }
+
+
+
+
+
+
+
+
+
 
 
 
