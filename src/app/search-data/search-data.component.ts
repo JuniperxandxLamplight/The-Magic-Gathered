@@ -78,16 +78,22 @@ export class SearchDataComponent implements OnInit {
 
   addSearchFilter(item, id){
 
-
     if (this.colorBtns[id].value == false) {
       this.colorBtns[id].value = true
     } else {
       this.colorBtns[id].value = false
     }
     console.log(this.colorBtns[id].name, this.colorBtns[id].value)
-
     this.searchTerms.push(item);
-    // console.log(this.searchTerms)
+
+    // if (this.typeBtns[id].value == false) {
+    //   this.typeBtns[id].value = true
+    // } else {
+    //   this.typeBtns[id].value = false
+    // }
+    // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
+    // this.searchTerms.push(item);
+
   }
 
 

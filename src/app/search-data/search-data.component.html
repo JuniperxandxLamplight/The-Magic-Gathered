@@ -16,7 +16,6 @@
 
     <div class="color-buttons">
       <button *ngFor="let currentBtn of colorBtns" type="checkbox" ng-model="currentBtn" class="color-btn" id={{currentBtn.name}} (click)="addSearchFilter(currentBtn.name, currentBtn.id)"><img src={{currentBtn.image}} alt={{currentBtn.name}}></button>
-      <p>value1 = {{this.colorBtns[0].value}}</p>
     </div>
 
     <div class="type-buttons">
