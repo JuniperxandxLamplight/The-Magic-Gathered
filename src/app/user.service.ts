@@ -5,10 +5,24 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
-  constructor(private database: AngularFireDatabase) {
-    this.users = database.list('users');
+
+  constructor(private af: AngularFireDatabase) {
+    this.users = af.list('users');
   }
+
+  getUsers() {
+    return this.users;
+  }
+
   addUserToDB(newUser) {
     this.users.push(newUser);
   }
+
+  removeUser(){}
+
+  //only for testing, do not want as a production feature
+  clearAll() {
+    this.af.object('/users/').remove();
+  }
+
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {Router} from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { Router } from '@angular/router';
 import { User } from '../models/user-data.model'
 import { UserService } from '../user.service'
 
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   user;
   private isLoggedIn: Boolean;
   private username: string;
-  users: any[] = [];
+  users: FirebaseListObservable<any[]>;
 
   constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router, public userService: UserService) {
     this.authService.user.subscribe(user => {
@@ -71,14 +72,22 @@ export class LoginComponent implements OnInit {
   //make this method actually check all username keys
   addUser() {
     let allUserNames: any[] = [];
-    this.users.forEach((user) => {
-      allUserNames.push(user.username);
-    });
-    if (allUserNames.includes(this.username)) {}
-    else{
-      let newUser = new User(this.username)
-      this.users.push(newUser);
-      this.userService.addUserToDB(newUser);
-    }
+    this.userService.getUsers().subscribe( list => {
+      console.log("userlist", list);
+
+      list.forEach((user) => {
+        allUserNames.push(user.username);
+        console.log("allusernames", allUserNames);
+      });
+
+      if (allUserNames.includes(this.username)) {
+        console.log("notNew");
+      }
+      else{
+        let newUser = new User(this.username, [], []);
+        console.log("newUser", newUser.library);
+        this.userService.addUserToDB(newUser);
+      }
+    })
   }
 }
