@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {Router} from '@angular/router';
+import { User } from '../models/user-data.model'
 
 
 
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   user;
   private isLoggedIn: Boolean;
-  private userName: String;
+  private userName: string;
+  users: any[] = [];
 
   constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router) {
     this.authService.user.subscribe(user => {
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
     this.authService.login();
     this.authService.user.subscribe(user => {
      if (this.isLoggedIn === true) {
+       this.addUser();
        this.router.navigate(['/user', this.userName]);
      }
    });
@@ -58,8 +61,17 @@ export class LoginComponent implements OnInit {
     })
     this.authService.user.subscribe(user => {
      if (this.isLoggedIn === true) {
+       this.addUser();
        this.router.navigate(['/user', this.userName]);
      }
    });
+  }
+
+  //make this method actually check all username keys
+  addUser() {
+    if (!this.users.includes(this.userName)) {
+      this.users.push(new User(this.userName));
+      console.log(this.users);
+    }
   }
 }
