@@ -9,8 +9,8 @@
   <div class="search">
     <div class="searchbar">
       <img class="search-icon" src="../../assets/images/search_icon.svg" alt="search">
-      <input type="text" name="Search" placeholder="Search">
-      <button class="srchbtn">Submit</button>
+      <input #stringInput id="input" type="text" name="Search" placeholder="Search">
+      <button class="srchbtn" (click)="getMTGcards(); getSearchTerm(stringInput.value) " >Submit</button>
     </div>
     <div class="sort-by">
       <button class="left-sortbtn" type="button" name="button" (click)="addNameWins()" [class.selected]="superTypes[0].value">by card name</button>
@@ -48,5 +48,7 @@
 
   </div>
 </div>
+<div class="">
 
-<app-card-list ></app-card-list>
+
+  <app-card-list></app-card-list>

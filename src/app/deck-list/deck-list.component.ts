@@ -11,7 +11,7 @@ export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
-  @Input() user: User;
+  // @Input() user: User;
 
   constructor() { }
 

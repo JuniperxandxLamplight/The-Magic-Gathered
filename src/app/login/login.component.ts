@@ -85,14 +85,12 @@ export class LoginComponent implements OnInit {
       if (allUserNames.includes(this.username)) {
         console.log("notNew");
         this.subscription.unsubscribe();
-        console.log(this.subscription);
       }
       else{
         let newUser = new User(this.username, [""], [""]);
         console.log("newUser", newUser.library);
         this.userService.addUserToDB(newUser);
         this.subscription.unsubscribe();
-        console.log(this.subscription);
       }
     })
   }
