@@ -22,6 +22,7 @@ import { DeckListComponent } from './deck-list/deck-list.component';
 
 import { WINDOW_PROVIDERS } from "./window.service";
 import { LibraryComponent } from './library/library.component';
+import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -40,7 +41,8 @@ export const firebaseConfig = {
     DetailsComponent,
     RegisterComponent,
     DeckListComponent,
-    LibraryComponent
+    LibraryComponent,
+    BottomNavComponent
   ],
   imports: [
     BrowserModule,
