@@ -12,10 +12,11 @@ h1 {
   font-size: 30px;
   font-weight: normal;
   margin: 20px 0;
+  color: lightyellow;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
   color: white;
   margin: 0;
@@ -24,6 +25,7 @@ h2 {
 
 button {
   display: flex;
+  outline: none;
 }
 
 .header,
@@ -34,18 +36,32 @@ button {
   align-items: center;
   background-color: #D4D4D4;
   position: fixed;
+  margin-left: -8px;
 }
 
 .header {
   display: flex;
+  height: 50px;
   width: 100vw;
+  border-bottom: 1px solid #7B7B7B;
+  background-color: grey;
 }
 
+
 .search-body {
-  margin-top: 70px;
+  margin-top: 51px;
   position: fixed;
   border-bottom: 1px solid #7B7B7B;
   transition: display 5s ease;
+}
+
+.filters {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  width: 100vw;
 }
 
 #transform {
@@ -57,18 +73,37 @@ button {
 }
 
 .search {
+  display: flex;
+  flex-direction: column;
   color: black;
   margin-bottom: 10px;
+  margin-top: 0;
   input[type="text"] {
     font-size: 16px;
     padding-top: 4px;
     padding-bottom: 0;
     padding-left: 30px;
     line-height: 33px;
-    width: 290px;
-    border-radius: 5px;
+    width: 257px;
+    // border-top-left-radius: 5px;
+    // border-bottom-left-radius: 5px;
     border: black solid 0px;
   }
+  .srchbtn {
+    // border-top-right-radius: 5px;
+    // border-bottom-right-radius: 5px;
+    border: 0;
+    background-color: darkgrey;
+    padding-top: 4px;
+    font-size: 16px;
+    padding-right: 11px;
+    color: white;
+  }
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
 }
 
 .search-icon {
@@ -78,16 +113,49 @@ button {
 
 }
 
-
+.sort-by-two,
 .sort-by {
   display: flex;
-  background-color: #7B7B7B;
+  // background-color: #7B7B7B;
   padding: 0;
   width: 100%;
   justify-content: center;
   align-items: center;
   height: 35px;
+  margin-top: -3px;
+  button {
+    background-color: #7B7B7B;
+    color: darkgrey;
+    font-size: 20px;
+    line-height: 5px;
+    padding-bottom: 0;
+    border: 0;
+    width: 178px;
+    height: 30px;
+    justify-content: center;
+  }
+  .selected {
+    background: grey;
+    color: white;
+  }
 }
+
+.sort-by-two {
+  background-color: #7B7B7B;
+  button {
+    color: white;
+    width: 80px;
+    padding-right: 0;
+  }
+}
+
+.left-sortbtn {
+  border-bottom-left-radius: 5px;
+}
+.right-sortbtn {
+  border-bottom-right-radius: 5px;
+}
+
 
 .drop-arrow {
   width: 20px;
@@ -95,15 +163,6 @@ button {
   margin-left: .5em;
 }
 
-.filters {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // background-color: #D4D4D4;
-  margin: 0;
-  width: 100vw;
-  // animation-name: navimate;
-}
 
 
 .color-buttons,
@@ -115,15 +174,17 @@ button {
 .color-buttons {
   grid-template-areas: "a a a a a";
   grid-gap: 10px;
+  margin-top: -5px;;
 }
 
 .type-buttons {
   grid-template-areas: "a a a a a a a";
   grid-gap: 7px;
+  margin-bottom: 8px;
 }
 
-.color-btn,
-.type-btn {
+.colorbtn,
+.typebtn {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
@@ -140,16 +201,81 @@ button {
   }
 }
 
-.color-btn {
+.colorbtn {
   height: 57px;
   width: 57px;
 }
 
-.type-btn {
+.typebtn {
   height: 40px;
   width: 40px;
 }
 
+
+
+.terms-container {
+  position: relative;
+  padding-top: 55px;
+  z-index: -3;
+  background-color: darkgrey;
+
+}
+
+.key-terms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  border-radius: 5px;
+  z-index: -1;
+  background-color: grey;
+  border: 5px solid lightgrey;
+  color: white;
+  div {
+    font-family: arial;
+    display: flex;
+    padding-left: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+  }
+  img {
+    height: 20px;
+    width: 20px;
+    padding-left: 3px;
+  }
+}
+
+.key-terms:first-child {
+  padding-top:20px;
+}
+
+.lorem-contain {
+  position: relative;
+  background-color: darkgrey;
+  z-index: -4;
+}
+
+.btntrans {
+  background-color: lightyellow;
+  filter: saturate(2);
+  border: none;
+
+  // border: red solid 1px;
+}
+
 .lorem {
+  position: relative;
   background-color: pink;
+  width: 320px;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid lightblue;
+  border-top: 0;
+  margin-top: -10px;
+  padding: 20px 10px;;
+  z-index: -3;
 }
