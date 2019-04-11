@@ -10,15 +10,21 @@ import { MtgCardsService } from "../mtg-cards.service"
 
 
 
+
 @Component({
   selector: 'app-search-data',
   templateUrl: './search-data.component.html',
-  styleUrls: ['./search-data.component.scss']
+  styleUrls: ['./search-data.component.scss'],
+  providers: [MtgCardsService],
 })
 
 export class SearchDataComponent implements OnInit {
   searchTerms: any[] = [];
+  public formattedSearchTerms: string = "";
   nameVsSup: string = "";
+  cardPage: any[] = [];
+  cardList: any[] = [];
+
 
 
 
@@ -33,7 +39,7 @@ export class SearchDataComponent implements OnInit {
 
   constructor(
   @Inject(DOCUMENT) private document: Document,
-  @Inject(WINDOW) private window: Window) { }
+  @Inject(WINDOW) private window: Window, private cardsService: MtgCardsService) { }
 
   ngOnInit() {
   }
@@ -101,18 +107,6 @@ export class SearchDataComponent implements OnInit {
 
   }
 
-
-  formatParamaters(searchTermsArray) {
-    let paramString: string = '';
-    let possibleParams: string = 'white green red blue black artifact creature enchantment land planeswalker sorcery instant';
-    let paramCodes = {
-      white: ''
-    }
-    searchTermsArray.forEach(function (term) {
-
-    });
-  }
-
   addSearchFilterTyp(item, id){
 
     if (this.typeBtns[id].value == false) {
@@ -146,15 +140,61 @@ export class SearchDataComponent implements OnInit {
       console.log(this.nameVsSup)
     }
 
+    formatQuery(paramArray) {
+      let paramString = '('
+      const paramObj = {
+        white: 'c:w ',
+        green: 'c:g ',
+        red: 'c:r ',
+        blue: 'c:u ',
+        black: 'c:b ',
+        artifact: 't:artifact ',
+        creature: 't:creature ',
+        enchantment: 't:enchantment ',
+        land: 't:land ',
+        planeswalker: 't:planeswalker ',
+        sorcery: 't:sorcery ',
+        instant: 't:instant '
+      };
 
+      paramArray.forEach(function (param) {
+        if(paramObj[param]) {
+          paramString += paramObj[param];
+        }
+      });
 
+      paramString += ')';
+      console.log(paramString);
+      this.formattedSearchTerms = paramString;
 
+    }
 
+    getSearchTerm(term) {
+      console.log(term);
+    }
 
+    getMTGcards() {
+     this.formatQuery(this.searchTerms);
+     this.cardsService.getMTGCardList(this.formattedSearchTerms).subscribe(response => {
+        this.cardPage = response.json();
+        this.cardList = [].concat.apply([], response.json().data);
+        console.log('cardPage', this.cardPage);
+        console.log('cardPage has more', this.cardPage['has_more']);
+        console.log('cardPage next_page', this.cardPage['next_page']);
+        console.log('cardList', this.cardList);
+      });
+    }
 
-
-
-
+    getNextPage(){
+      let nextPage = this.cardPage['next_page'];
+      this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
+        this.cardPage = response.json();
+        this.cardList = this.cardList.concat.apply(this.cardList, response.json().data);
+        // this.cardList.push(response.json().data);
+        console.log('new cardPage', this.cardPage);
+        console.log('new longer list', this.cardList);
+      });
+    }
 
 
 
