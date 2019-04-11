@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterButton } from '../models/search-data-buttons.model'
+import { FilterButton, nameAndSuper } from '../models/search-data-buttons.model'
 import { HostListener} from "@angular/core";
 
 //scroll tips addition
@@ -17,6 +17,7 @@ import { WINDOW } from "../window.service";
 
 export class SearchDataComponent implements OnInit {
   searchTerms: any[] = [];
+  nameVsSup: string = "";
 
 
 
@@ -26,6 +27,7 @@ export class SearchDataComponent implements OnInit {
   public numberScrolls: number[] = [0];
 
   public trans: string = "transform";
+  public colorbtn: string = "colorbtn";
 
 
   constructor(
@@ -72,11 +74,17 @@ export class SearchDataComponent implements OnInit {
     new FilterButton("instant", "../../assets/images/instant_symbol.svg", 6)
   ]
 
+  superTypes = [
+    new nameAndSuper("byname", true, 0),
+    new nameAndSuper("bysuper", false, 1)
+  ]
+
   addSearchFilter(item, id){
 
     if (this.colorBtns[id].value == false) {
       this.colorBtns[id].value = true
       this.searchTerms.push(item);
+
     } else {
       this.colorBtns[id].value = false
       for( var i = 0; i < this.searchTerms.length; i++){
@@ -97,6 +105,7 @@ export class SearchDataComponent implements OnInit {
     if (this.typeBtns[id].value == false) {
       this.typeBtns[id].value = true
       this.searchTerms.push(item);
+
     } else {
       this.typeBtns[id].value = false
       for( var i = 0; i < this.searchTerms.length; i++){
@@ -108,15 +117,21 @@ export class SearchDataComponent implements OnInit {
 
     console.log(this.searchTerms)
 
-
-
-
-
-    // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
-    // this.searchTerms.push(item);
-    // console.log(this.searchTerms)
-
   }
+
+    addNameWins(){
+      this.nameVsSup = "card-name"
+      this.superTypes[0].value = true;
+      this.superTypes[1].value = false;
+      console.log(this.nameVsSup)
+    }
+
+    addSuperWins(){
+      this.nameVsSup = "supertype"
+      this.superTypes[0].value = false;
+      this.superTypes[1].value = true;
+      console.log(this.nameVsSup)
+    }
 
 
 

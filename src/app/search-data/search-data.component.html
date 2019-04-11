@@ -7,23 +7,33 @@
 
 <div class="search-body" id={{trans}}>
   <div class="search">
-    <img class="search-icon" src="../../assets/images/search_icon.svg" alt="search">
-    <input type="text" name="Search" placeholder="Search">
+    <div class="searchbar">
+      <img class="search-icon" src="../../assets/images/search_icon.svg" alt="search">
+      <input type="text" name="Search" placeholder="Search">
+      <button class="srchbtn">Submit</button>
+    </div>
+    <div class="sort-by">
+      <button class="left-sortbtn" type="button" name="button" (click)="addNameWins()" [class.selected]="superTypes[0].value">by card name</button>
+      <button class="right-sortbtn" type="button" name="button" (click)="addSuperWins()" [class.selected]="superTypes[1].value">by supertype</button>
+    </div>
   </div>
 
   <div class="filters">
 
 
     <div class="color-buttons">
-      <button *ngFor="let currentBtn of colorBtns" type="checkbox" ng-model="currentBtn" class="color-btn" id={{currentBtn.name}} (click)="addSearchFilter(currentBtn.name, currentBtn.id)"><img src={{currentBtn.image}} alt={{currentBtn.name}}></button>
+      <button *ngFor="let currentBtn of colorBtns" type="checkbox" ng-model="currentBtn" class=colorbtn [class.btntrans]="currentBtn.value" id={{currentBtn.name}} (click)="addSearchFilter(currentBtn.name, currentBtn.id)"><img src={{currentBtn.image}} alt={{currentBtn.name}}></button>
     </div>
 
     <div class="type-buttons">
-      <button *ngFor="let currentTypBtn of typeBtns" type="checkbox" ng-model="currentTypBtn" class="type-btn" id={{currentTypBtn.name}} (click)="addSearchFilterTyp(currentTypBtn.name, currentTypBtn.id)"><img src={{currentTypBtn.image}} alt={{currentTypBtn.name}}></button>
+      <button *ngFor="let currentTypBtn of typeBtns" type="checkbox" ng-model="currentTypBtn" class="typebtn" [class.btntrans]="currentTypBtn.value" id={{currentTypBtn.name}} (click)="addSearchFilterTyp(currentTypBtn.name, currentTypBtn.id)"><img src={{currentTypBtn.image}} alt={{currentTypBtn.name}}></button>
     </div>
 
-    <div class="sort-by">
-      <h2>sort by</h2>
+
+
+
+    <div class="sort-by-two">
+      <button>sort by</button>
       <img src="../../assets/images/drop-arrow.png" alt="dropdown" class="drop-arrow">
     </div>
 
