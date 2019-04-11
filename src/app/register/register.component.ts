@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../authentication.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -53,8 +52,9 @@ export class RegisterComponent implements OnInit {
 
   addUser(name) {
     let newUser = new User(name, [""], [""]);
-    console.log("newUser", newUser.library);
     this.userService.addUserToDB(newUser);
+    console.log("new user", newUser)
+    console.log("new user", newUser.username)
     // let allUserNames: any[] = [];
     // this.userService.getUsers().subscribe( list => {
     //   console.log("userlist", list);

@@ -19,23 +19,23 @@ export class UserService {
   getCurrentUser() {
     let signedIn = firebase.auth().currentUser;
     let list = this.getUsers().subscribe(list => {
-        list.forEach((user) => {
-          console.log("sign in display", signedIn.displayName);
-          console.log("username", user.username);
+      list.forEach((user) => {
+        console.log("sign in display", signedIn.displayName);
+        console.log("username", user.username);
 
-          if (signedIn.displayName === user.username) {
-            this.currentUser = user;
-          }
-        });
-        console.log("current", this.currentUser);
+        if (signedIn.displayName === user.username) {
+          this.currentUser = user;
+        }
       });
+      console.log("current", this.currentUser);
+    });
   }
 
   addUserToDB(newUser) {
     this.users.push(newUser);
   }
 
-  async addCardToUserLibrary(newCard) {
+  addCardToUserLibrary(newCard) {
     this.getCurrentUser();
     setTimeout(() => {
       console.log("username again" , this.currentUser);
@@ -50,7 +50,6 @@ export class UserService {
         console.log("name", childKey);
         console.log("user", ref);
       })
-
     }, 200);
     // let signedIn = firebase.auth().currentUser;
     // let list = this.getUsers().subscribe(list => {

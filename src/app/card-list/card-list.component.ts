@@ -20,7 +20,7 @@ export class CardListComponent implements OnInit {
   constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
 
   ngOnInit() {
-    
+
   }
 
   getMTGcards() {
@@ -32,7 +32,7 @@ export class CardListComponent implements OnInit {
   }
 
   getNextPage(){
-    for (let i=2; i < (100) ; i++) {
+    for (let i=2; i < (10) ; i++) {
       setTimeout( () => {
         let nextPage = `https://api.scryfall.com/cards?lang=en&page=${i}`;
         this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
@@ -50,6 +50,10 @@ export class CardListComponent implements OnInit {
 
   saveMTGcards(cardlist) {
     this.dbService.writeCards(cardlist);
+  }
+
+  deleteUsers() {
+    this.dbService.deleteUsers();
   }
 
 }
