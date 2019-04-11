@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from "firebase";
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  styleUrls: ['./details.component.scss'],
+  providers: [ UserService ]
 })
 export class DetailsComponent implements OnInit {
   Test: any = {
@@ -18,10 +22,20 @@ export class DetailsComponent implements OnInit {
     toughness: "1",
     oracle_text: "Menace\nAt the beginning of your precombat main ..."
   }
+  currentUser;
 
-  constructor() { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  addCardToDeck() {
+    console.log("add card to deck");
+  }
+
+  addCardToLibrary(card) {
+    console.log("add card to library");
+    this.userService.addCardToUserLibrary(card);
   }
 
   colorTranslate(card){

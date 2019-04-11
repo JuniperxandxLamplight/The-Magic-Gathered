@@ -20,6 +20,9 @@ import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
 import { DeckListComponent } from './deck-list/deck-list.component';
 
+import { WINDOW_PROVIDERS } from "./window.service";
+import { LibraryComponent } from './library/library.component';
+
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
@@ -36,7 +39,8 @@ export const firebaseConfig = {
     SearchDataComponent,
     DetailsComponent,
     RegisterComponent,
-    DeckListComponent
+    DeckListComponent,
+    LibraryComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     routing
   ],
-  providers: [AuthGuard, AuthenticationService],
+  providers: [AuthGuard, AuthenticationService, WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../models/user-data.model'
+
 
 @Component({
   selector: 'app-deck-list',
@@ -9,7 +11,7 @@ export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
-
+  @Input() user: User;
 
   constructor() { }
 
