@@ -7,9 +7,11 @@ import * as firebase from "firebase";
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
+  library: FirebaseListObservable<any[]>;
   currentUser;
   constructor(private af: AngularFireDatabase) {
     this.users = af.list('users');
+    this.library = af.list('library');
   }
 
   getUsers() {
@@ -36,6 +38,10 @@ export class UserService {
     this.users.push(newUser);
   }
 
+  getLibrary() {
+    return this.library;
+  }
+
   //Instead of pulling down all users and data, create libraries that have an id associated with the individual USER and search through that to match up
 
   addCardToUserLibrary(newCard) {
@@ -49,13 +55,13 @@ export class UserService {
       ref.once("value").then((snapshot) => {
         var key = snapshot.key;
         var childKey = snapshot.child(`${library}`).key;
-        var newLibrary = firebase.database().ref().child(`${library}`).push().key;
+        var library = firebase.database().ref().child(`${library}`).push().key;
          console.log("library", library);
-        console.log("newlibrary", newLibrary);
+        console.log("newlibrary", newCard);
         console.log("key", key);
         console.log("child key", childKey);
         var updates = {};
-        updates[`users/` + `library/` + `${library}` + `/` + newLibrary] = library;
+        updates[`/library/` + `${library}`] = newCard;
         return firebase.database().ref().update(updates);
       });
     }, 200);

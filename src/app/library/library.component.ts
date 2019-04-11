@@ -14,9 +14,13 @@ import { UserService } from '../user.service';
 })
 export class LibraryComponent implements OnInit {
   @Input() currentUser: User;
+  library: any[] = []
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-
+    this.userService.getLibrary().subscribe(library => {
+      this.library = library;
+      console.log(library);
+    });
   }
 }
