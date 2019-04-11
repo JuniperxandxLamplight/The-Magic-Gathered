@@ -17,8 +17,6 @@ export class LibraryComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    // this.userService.getCurrentUser();
-    console.log(this.currentUser);
-  }
 
+  }
 }
