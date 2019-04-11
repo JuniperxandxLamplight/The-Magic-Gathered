@@ -1,18 +1,15 @@
-<div *ngFor="let card of testList; let i = index" class="deckList">
+<div *ngFor="let card of testList; let i = index" class="deckList" id={{i}}>
   <div [className]="color(card)">
     <div class="card">
       <div class="supertype">
         <img src="../../assets/images/{{card.type}}.svg" alt="supertype">
       </div>
       <div class="name">
-        <p>{{trunk(card.name)}}</p>
+        <p>{{card.name}}</p>
       </div>
-      <div class="colorSet">
-        <div [className]="colorImgClass(card, i)" class="colors" *ngFor="let color of card.colors; let i = index">
-          <img [className]="colorImgClass(card, i)" src="../../assets/images/{{colorIcon(card, i)}}.svg" alt="color icon">
-        </div>
+      <div class="colors" *ngFor="let color of card.colors">
+        <img src="../../assets/images/{{color}}.svg" alt="color icon">
       </div>
-      <div [className]="checkCover(card)"></div>
     </div>
   </div>
 </div>
