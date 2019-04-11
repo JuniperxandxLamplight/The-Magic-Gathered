@@ -35,7 +35,7 @@ export class CardListComponent implements OnInit {
   }
 
   getNextPage(){
-<<<<<<< HEAD
+
     for (let i=2; i < (10) ; i++) {
       setTimeout( () => {
         let nextPage = `https://api.scryfall.com/cards?lang=en&page=${i}`;
@@ -50,7 +50,6 @@ export class CardListComponent implements OnInit {
       let allPages = [].concat.apply([], this.cardList);
       console.log(allPages);
     }, 20000);
-=======
     let nextPage = this.cardPage['next_page'];
     this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
       this.cardPage = response.json();
@@ -64,7 +63,7 @@ export class CardListComponent implements OnInit {
   getShallowCardInfo() {
     //name supertype color
     console.log(this.cardList[0].name + this.cardList[0].mana_cost);
->>>>>>> master
+
   }
 
 
