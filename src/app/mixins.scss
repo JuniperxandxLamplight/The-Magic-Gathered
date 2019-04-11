@@ -1,30 +1,35 @@
 @mixin multi-Theme() {
   background-color: #CCBA1A;
-  color: #907226;
+  color: #382a09;
   border-color: #907226;
+}
+@mixin colorless-Theme() {
+  background-color: slategray;
+  color: #3a3a3a;
+  border-color: black;
 }
 @mixin White-Theme() {
   background-color: #B0B2B2;
-  color: white;
+  color: #262626;
   border-color: #5F5F5F;
 }
 @mixin Blue-Theme() {
   background-color: #84A6FF;
-  color: #264490;
+  color: #172b5b;
   border-color: #264490;
 }
 @mixin Green-Theme() {
   background-color: #4BD748;
-  color: #007805;
+  color: #003d02;
   border-color: #007805;
 }
 @mixin Red-Theme() {
   background-color: #D73838;
-  color: #7E0000;
+  color: #4c0000;
   border-color: #7E0000;
 }
 @mixin Black-Theme() {
   background-color: #303030;
-  color: #B9B9B9;
+  color: white;
   border-color: #000000;
 }
