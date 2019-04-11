@@ -141,7 +141,11 @@ export class CardListComponent implements OnInit {
       });
     }
   }
-
+  
+  typeCheck(type){
+    const typeArr = type.split(' ');
+    return typeArr[0];
+  }
   color(card){
     let htmlClass: string;
     if(card.colors[1]){
