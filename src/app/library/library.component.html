@@ -2,6 +2,6 @@
   library works! {{currentUser.username}}
 </p>
 
-<!-- <div *ngFor="let deck of currentUser.decks"> -->
-
-<!-- </div> -->
+<div *ngFor="let card of currentUser.library">
+  {{card}}
+</div>

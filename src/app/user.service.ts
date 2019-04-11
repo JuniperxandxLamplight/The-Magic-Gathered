@@ -17,6 +17,8 @@ export class UserService {
   }
 
   getCurrentUser() {
+    // let signedIn = firebase.auth().currentUser;
+    // let list = this.getUsers();
     let signedIn = firebase.auth().currentUser;
     let list = this.getUsers().subscribe(list => {
       list.forEach((user) => {
@@ -34,6 +36,8 @@ export class UserService {
     this.users.push(newUser);
   }
 
+  //Instead of pulling down all users and data, create libraries that have an id associated with the individual USER and search through that to match up
+
   addCardToUserLibrary(newCard) {
     this.getCurrentUser();
     setTimeout(() => {
@@ -41,6 +45,7 @@ export class UserService {
       let library = this.currentUser.library;
       library.push(newCard);
       let ref = firebase.database().ref(`users/`)
+      console.log("ref", ref)
       ref.once("value").then((snapshot) => {
         var key = snapshot.key;
         var childKey = snapshot.child(`${library}`).key;
@@ -50,14 +55,11 @@ export class UserService {
         console.log("key", key);
         console.log("child key", childKey);
         var updates = {};
-        updates[`/users/` + `/library/` + `${library}` + `/` + newLibrary] = library;
+        updates[`users/` + `library/` + `${library}` + `/` + newLibrary] = library;
         return firebase.database().ref().update(updates);
       });
     }, 200);
-
   }
 
   removeUser(){}
-
-
 }
