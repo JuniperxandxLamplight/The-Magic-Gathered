@@ -191,6 +191,7 @@ export class SearchDataComponent implements OnInit {
       }
     }
 
+
     getMTGcards(term) {
      this.getSearchTerm(term)
      this.formatQuery(this.searchTerms);
@@ -206,6 +207,7 @@ export class SearchDataComponent implements OnInit {
           console.log('cardPage has more', this.cardPage['has_more']);
           console.log('cardPage next_page', this.cardPage['next_page']);
           console.log('cardList', this.cardList);
+          this.formatCardList();
         });
      } else {
          this.cardsService.getMTGCardList(this.formattedSearchTerms).subscribe(response => {
@@ -215,6 +217,7 @@ export class SearchDataComponent implements OnInit {
            console.log('cardPage has more', this.cardPage['has_more']);
            console.log('cardPage next_page', this.cardPage['next_page']);
            console.log('cardList', this.cardList);
+           this.formatCardList();
          });
        }
        this.formatCardList();
