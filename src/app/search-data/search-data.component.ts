@@ -6,7 +6,8 @@ import { HostListener} from "@angular/core";
 import { Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/platform-browser";
 import { WINDOW } from "../window.service";
-import { MtgCardsService } from "../mtg-cards.service"
+import { MtgCardsService } from "../mtg-cards.service";
+import { Card } from '../models/card.model';
 
 
 
@@ -24,6 +25,7 @@ export class SearchDataComponent implements OnInit {
   nameVsSup: string = "";
   cardPage: any[] = [];
   cardList: any[] = [];
+  formattedCardList: any[] = [];
 
 
 
@@ -126,6 +128,8 @@ export class SearchDataComponent implements OnInit {
 
   }
 
+  formatAPIReturn() {}
+
     addNameWins(){
       this.nameVsSup = "card-name"
       this.superTypes[0].value = true;
@@ -182,6 +186,8 @@ export class SearchDataComponent implements OnInit {
         console.log('cardPage has more', this.cardPage['has_more']);
         console.log('cardPage next_page', this.cardPage['next_page']);
         console.log('cardList', this.cardList);
+        this.formatCardList();
+        console.log()
       });
     }
 
@@ -194,6 +200,14 @@ export class SearchDataComponent implements OnInit {
         console.log('new cardPage', this.cardPage);
         console.log('new longer list', this.cardList);
       });
+    }
+
+    formatCardList() {
+      this.cardList.forEach((ob) => {
+        this.formattedCardList.push(new Card(ob.name, ob.colors, ob.type_line, ob.oracle_text, ob.rarity, ob.set_name)
+        )
+      })
+      console.log(this.formattedCardList);
     }
 
 
