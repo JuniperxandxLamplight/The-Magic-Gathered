@@ -1,7 +1,7 @@
 
 
 <div *ngFor="let card of data; let i = index" class="deckList">
-  <div (click)="clicked=!clicked" [className]="color(card)">
+  <div (click)="card.clicked=!card.clicked" [className]="color(card)">
     <div class="card">
       <div class="supertype">
         <img src="../../assets/images/{{card.type}}.svg" alt="supertype">
@@ -17,7 +17,7 @@
       <div [className]="checkCover(card)"></div>
     </div>
   </div>
-  <div *ngIf="clicked" class="details">
+  <div *ngIf="card.clicked" class="details">
     <app-details [card]="card"></app-details>
   </div>
 </div>
