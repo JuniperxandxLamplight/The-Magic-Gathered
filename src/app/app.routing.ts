@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth-guard.service';
 import { DeckListComponent } from './deck-list/deck-list.component';
 import { LibraryComponent } from './library/library.component';
+import { SearchDataComponent } from './search-data/search-data.component';
 
 
 
@@ -24,6 +25,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'deck-list', component: DeckListComponent,
+  },
+  {
+    path: 'search-data', component: SearchDataComponent,
+  },
+  {
+    path: 'library', component: LibraryComponent,
   },
 ]
 

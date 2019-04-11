@@ -196,6 +196,7 @@ export class SearchDataComponent implements OnInit {
      this.formatQuery(this.searchTerms);
 
 
+
      if(this.formattedSearchTerms === '()' && this.getSearchTerm(this.inputTerm) === false) {
 
        this.cardsService.getPlainMTGCardList().subscribe(response => {
@@ -216,6 +217,7 @@ export class SearchDataComponent implements OnInit {
            console.log('cardList', this.cardList);
          });
        }
+       this.formatCardList();
      }
 
     getNextPage(){
