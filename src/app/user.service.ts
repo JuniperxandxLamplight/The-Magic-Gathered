@@ -20,8 +20,6 @@ export class UserService {
     let signedIn = firebase.auth().currentUser;
     let list = this.getUsers().subscribe(list => {
       list.forEach((user) => {
-        console.log("sign in display", signedIn.displayName);
-        console.log("username", user.username);
 
         if (signedIn.displayName === user.username) {
           this.currentUser = user;
@@ -29,6 +27,7 @@ export class UserService {
       });
       console.log("current", this.currentUser);
     });
+    return this.currentUser;
   }
 
   addUserToDB(newUser) {
