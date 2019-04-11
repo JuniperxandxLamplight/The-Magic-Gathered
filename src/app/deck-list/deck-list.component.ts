@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-deck-list',
@@ -9,15 +9,13 @@ export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
-<<<<<<< HEAD
 
-=======
-  // @Input() user: User;
->>>>>>> master
+  @Input() data;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.data);
     for(let i=0; i<10; i++){
       this.testList.push(
         this.Test = {
