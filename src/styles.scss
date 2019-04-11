@@ -51,6 +51,9 @@ table {
 .multi{
 	@include multi-Theme;
 }
+.colorless{
+	@include colorless-Theme;
+}
 .R{
 	@include Red-Theme;
 }
