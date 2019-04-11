@@ -1,5 +1,9 @@
 
 <button (click)="logout()">Log out</button>
 <p>
-  user works!
+USER PAGE
 </p>
+<button (click)="getCurrentUserOb()">CurrentUser Object</button>
+
+<app-library *ngIf="ready" [currentUser]="currentUser"></app-library>
+<!-- <app-deck-list [user]="currentUser"></app-deck-list> -->

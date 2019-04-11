@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   private isLoggedIn: Boolean;
   private username: string;
   users: FirebaseListObservable<any[]>;
+  subscription;
 
   constructor(public authService: AuthenticationService, private formBuilder: FormBuilder, private router: Router, public userService: UserService) {
     this.authService.user.subscribe(user => {
@@ -70,10 +71,10 @@ export class LoginComponent implements OnInit {
    });
   }
 
-  //make this method actually check all username keys
+  // make this method actually check all username keys
   addUser() {
     let allUserNames: any[] = [];
-    this.userService.getUsers().subscribe( list => {
+    this.subscription = this.userService.getUsers().subscribe( list => {
       console.log("userlist", list);
 
       list.forEach((user) => {
@@ -83,11 +84,13 @@ export class LoginComponent implements OnInit {
 
       if (allUserNames.includes(this.username)) {
         console.log("notNew");
+        this.subscription.unsubscribe();
       }
       else{
-        let newUser = new User(this.username, [], []);
+        let newUser = new User(this.username, [""], [""]);
         console.log("newUser", newUser.library);
         this.userService.addUserToDB(newUser);
+        this.subscription.unsubscribe();
       }
     })
   }

@@ -1,32 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MtgCardsService } from '../mtg-cards.service';
-import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { DbService } from '../db.service';
-
 
 @Component({
-  selector: 'app-card-list',
-  templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.scss'],
-  providers: [ MtgCardsService, DbService ]
+  selector: 'app-deck-list',
+  templateUrl: './deck-list.component.html',
+  styleUrls: ['./deck-list.component.scss']
 })
-
-export class CardListComponent implements OnInit {
-
-  hasMore: boolean = false;
-  allPages;
+export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
-  Test: any;
+
   @Input() data;
-  constructor(private cardsService: MtgCardsService, private dbService: DbService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    console.log("on init", this.data);
-    for(let i=0; i<1; i++){
+    console.log(this.data);
+    for(let i=0; i<10; i++){
       this.testList.push(
         this.Test = {
         name: "Cabal Therapist",
@@ -92,7 +82,7 @@ export class CardListComponent implements OnInit {
         mana_cost: "{B}",
         cmc: "8",
         prices: {eur:"14.89", usd: "15.83", usdFoil: "49.99"},
-        type: "Creature",
+        type: "Legendary Creature - Vampire",
         power: "5",
         toughness: "5",
         oracle_text: "Menace\nAt the beginning of your precombat main ..."
@@ -120,7 +110,7 @@ export class CardListComponent implements OnInit {
         mana_cost: "{B}",
         cmc: "8",
         prices: {eur:"14.89", usd: "15.83", usdFoil: "49.99"},
-        type: "Creature",
+        type: "Enchantment - Human Soldier",
         power: "5",
         toughness: "5",
         oracle_text: "Menace\nAt the beginning of your precombat main ..."
@@ -142,6 +132,11 @@ export class CardListComponent implements OnInit {
     }
   }
 
+
+  typeCheck(type){
+    const typeArr = type.split(' ');
+    return typeArr[0];
+  }
   color(card){
     let htmlClass: string;
     if(card.colors[1]){
