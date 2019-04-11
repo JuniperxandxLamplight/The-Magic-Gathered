@@ -39,12 +39,13 @@ export class UserService {
     this.getCurrentUser();
     setTimeout(() => {
       console.log("username again" , this.currentUser);
-      let username = this.currentUser.username;
-      let ref = firebase.database().ref(`users/${username}`);
+      let library = this.currentUser.library;
+      library.push(newCard);
+      let ref = firebase.database().ref(`users/`);
       ref.once("value").then((snapshot) => {
         var key = snapshot.key;
-        var childKey = snapshot.child("username").key; // "last"
-        console.log("username agina agn" ,username);
+        var childKey = snapshot.child(`${library}`).key; // "last"
+        console.log("username agina agn", library);
         console.log("name", key);
         console.log("name", childKey);
         console.log("user", ref);
