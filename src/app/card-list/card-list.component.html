@@ -1,12 +1,20 @@
-<p>
-  card-list works!
-</p>
-<button (click)="getMTGcards()">call</button>
-<button (click)="saveMTGcards(cardList)">save</button>
 
 
-
-<button (click)="deleteUsers()">hard delete</button>
-
-<button (click)="getNextPage()">nextPage</button>
-<button (click)="getShallowCardInfo()">getShallowCardInfo</button>
+<div *ngFor="let card of testList; let i = index" class="deckList">
+  <div [className]="color(card)">
+    <div class="card">
+      <div class="supertype">
+        <img src="../../assets/images/{{card.type}}.svg" alt="supertype">
+      </div>
+      <div class="name">
+        <p>{{trunk(card.name)}}</p>
+      </div>
+      <div class="colorSet">
+        <div [className]="colorImgClass(card, i)" class="colors" *ngFor="let color of card.colors; let i = index">
+          <img [className]="colorImgClass(card, i)" src="../../assets/images/{{colorIcon(card, i)}}.svg" alt="color icon">
+        </div>
+      </div>
+      <div [className]="checkCover(card)"></div>
+    </div>
+  </div>
+</div>
