@@ -16,6 +16,10 @@ export class DbService {
     this.af.object('/cards/').remove();
   }
 
+  deleteUsers() {
+    this.af.object('/users/').remove();
+  }
+
   writeCards(cardList) {
     this.deleteCards();
     this.cards.push(cardList);

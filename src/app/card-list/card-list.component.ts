@@ -35,6 +35,21 @@ export class CardListComponent implements OnInit {
   }
 
   getNextPage(){
+
+    for (let i=2; i < (10) ; i++) {
+      setTimeout( () => {
+        let nextPage = `https://api.scryfall.com/cards?lang=en&page=${i}`;
+        this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
+          this.cardPage = response.json().data;
+          this.cardList.push(this.cardPage);
+          console.log(this.cardPage);
+        });
+      }, 100);
+    }
+    setTimeout ( () => {
+      let allPages = [].concat.apply([], this.cardList);
+      console.log(allPages);
+    }, 20000);
     let nextPage = this.cardPage['next_page'];
     this.cardsService.getMTGNextPage(nextPage).subscribe(response => {
       this.cardPage = response.json();
@@ -48,11 +63,16 @@ export class CardListComponent implements OnInit {
   getShallowCardInfo() {
     //name supertype color
     console.log(this.cardList[0].name + this.cardList[0].mana_cost);
+
   }
 
 
   saveMTGcards(cardlist) {
     this.dbService.writeCards(cardlist);
+  }
+
+  deleteUsers() {
+    this.dbService.deleteUsers();
   }
 
 }
