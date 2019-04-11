@@ -9,7 +9,11 @@ export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
+<<<<<<< HEAD
 
+=======
+  // @Input() user: User;
+>>>>>>> master
 
   constructor() { }
 
