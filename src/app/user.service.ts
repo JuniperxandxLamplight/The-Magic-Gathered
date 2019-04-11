@@ -45,10 +45,10 @@ export class UserService {
   //Instead of pulling down all users and data, create libraries that have an id associated with the individual USER and search through that to match up
 
   addCardToUserLibrary(newCard) {
-    this.getCurrentUser();
+    this.getLibrary();
     setTimeout(() => {
       console.log("username again" , this.currentUser);
-      let library = this.currentUser.library;
+      let library = this.library;
       library.push(newCard);
       let ref = firebase.database().ref(`users/`)
       console.log("ref", ref)
