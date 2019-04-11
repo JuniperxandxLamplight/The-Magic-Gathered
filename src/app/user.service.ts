@@ -40,34 +40,21 @@ export class UserService {
       console.log("username again" , this.currentUser);
       let library = this.currentUser.library;
       library.push(newCard);
-      let ref = firebase.database().ref(`users/`);
+      let ref = firebase.database().ref(`users/`)
       ref.once("value").then((snapshot) => {
         var key = snapshot.key;
-        var childKey = snapshot.child(`${library}`).key; // "last"
-        console.log("username agina agn", library);
-        console.log("name", key);
-        console.log("name", childKey);
-        console.log("user", ref);
-      })
+        var childKey = snapshot.child(`${library}`).key;
+        var newLibrary = firebase.database().ref().child(`${library}`).push().key;
+         console.log("library", library);
+        console.log("newlibrary", newLibrary);
+        console.log("key", key);
+        console.log("child key", childKey);
+        var updates = {};
+        updates[`/users/` + `/library/` + `${library}` + `/` + newLibrary] = library;
+        return firebase.database().ref().update(updates);
+      });
     }, 200);
-    // let signedIn = firebase.auth().currentUser;
-    // let list = this.getUsers().subscribe(list => {
-    //   list.forEach((user) => {
-    //     if (signedIn.displayName === user.username) {
-    //       console.log("what is going on");
-    //       user.library.push(newCard);
-    //       console.log(user.library);
-    //     }
-    //   });
-    //   console.log("current", this.currentUser);
 
-
-
-      // this.getCurrentUser();
-      // console.log("new Card", newCard);
-      // console.log("currentUser", this.currentUser);
-      // console.log("library", this.currentUser.library);
-      // this.currentUser.library.push(newCard);
   }
 
   removeUser(){}
