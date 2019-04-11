@@ -28,19 +28,47 @@ export class UserService {
           }
         });
         console.log("current", this.currentUser);
-      })
+      });
   }
 
   addUserToDB(newUser) {
     this.users.push(newUser);
   }
 
-  addCardToUserLibrary(newCard) {
+  async addCardToUserLibrary(newCard) {
     this.getCurrentUser();
-    console.log("new Card", newCard);
-    console.log("currentUser", this.currentUser);
-    console.log("library", this.currentUser.library);
-    this.currentUser.library.push(newCard);
+    setTimeout(() => {
+      console.log("username again" , this.currentUser);
+      let username = this.currentUser.username;
+      let ref = firebase.database().ref(`users/${username}`);
+      ref.once("value").then((snapshot) => {
+        var key = snapshot.key;
+        var childKey = snapshot.child("username").key; // "last"
+        console.log("username agina agn" ,username);
+        console.log("name", key);
+        console.log("name", childKey);
+        console.log("user", ref);
+      })
+
+    }, 200);
+    // let signedIn = firebase.auth().currentUser;
+    // let list = this.getUsers().subscribe(list => {
+    //   list.forEach((user) => {
+    //     if (signedIn.displayName === user.username) {
+    //       console.log("what is going on");
+    //       user.library.push(newCard);
+    //       console.log(user.library);
+    //     }
+    //   });
+    //   console.log("current", this.currentUser);
+
+
+
+      // this.getCurrentUser();
+      // console.log("new Card", newCard);
+      // console.log("currentUser", this.currentUser);
+      // console.log("library", this.currentUser.library);
+      // this.currentUser.library.push(newCard);
   }
 
   removeUser(){}
