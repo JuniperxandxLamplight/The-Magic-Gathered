@@ -1,0 +1,15 @@
+<div *ngFor="let card of testList; let i = index" class="deckList" id={{i}}>
+  <div [className]="color(card)">
+    <div class="card">
+      <div class="supertype">
+        <img src="../../assets/images/{{card.type}}.svg" alt="supertype">
+      </div>
+      <div class="name">
+        <p>{{card.name}}</p>
+      </div>
+      <div class="colors" *ngFor="let color of card.colors">
+        <img src="../../assets/images/{{color}}.svg" alt="color icon">
+      </div>
+    </div>
+  </div>
+</div>
