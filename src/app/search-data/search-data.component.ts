@@ -6,6 +6,7 @@ import { HostListener} from "@angular/core";
 import { Inject } from "@angular/core";
 import { DOCUMENT } from "@angular/platform-browser";
 import { WINDOW } from "../window.service";
+import { MtgCardsService } from "../mtg-cards.service"
 
 
 
@@ -94,6 +95,17 @@ export class SearchDataComponent implements OnInit {
     // console.log(this.typeBtns[id].name, this.typeBtns[id].value)
     // this.searchTerms.push(item);
 
+  }
+
+  formatParamaters(searchTermsArray) {
+    let paramString: string = '';
+    let possibleParams: string = 'white green red blue black artifact creature enchantment land planeswalker sorcery instant';
+    let paramCodes = {
+      white: ''
+    }
+    searchTermsArray.forEach(function (term) {
+
+    });
   }
 
 

@@ -47,7 +47,7 @@ export class CardListComponent implements OnInit {
 
   getShallowCardInfo() {
     //name supertype color
-    console.log(this.cardList[0].name + this.cardList[0].mana_cost);
+    console.log(this.cardList[0].colors);
   }
 
 

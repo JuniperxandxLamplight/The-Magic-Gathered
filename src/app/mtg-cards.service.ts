@@ -9,8 +9,22 @@ export class MtgCardsService {
 
   constructor(private http: Http) { }
 
-  getMTGCardList() {
-    return this.http.get(`https://api.scryfall.com/cards?lang=en`);
+  getMTGCardList(paramaters?) {
+    let search = this.http.get(`https://api.scryfall.com/cards?lang=en`);
+    let baseSearch: string = "https://api.scryfall.com/cards/search?lang=en";
+    console.log(baseSearch + '&power=3');
+    return search;
+    // let baseApi = this.http.get(`https://api.scryfall.com/cards/search?lang=en`);
+    // let searchName = name;
+    // let searchColors = colors;
+    // let searchCardType = cardType;
+    // let searchSubType = subType
+    // let searchText = text;
+    // let searchRarity = rarity;
+    // let searchSet = set;
+    // let searchPower = power;
+    // let searchToughness = toughness;
+    // console.log(searchName);
   }
 
   getMTGNextPage(nextPage) {
