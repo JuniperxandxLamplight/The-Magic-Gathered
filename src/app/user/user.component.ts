@@ -16,11 +16,15 @@ import { User } from '../models/user-data.model';
 })
 export class UserComponent implements OnInit {
   currentUser: User;
+  ready = false;
 
   constructor(public authService: AuthenticationService, private router: Router, public userService: UserService) { }
 
   ngOnInit() {
     this.getCurrentUserOb();
+    setTimeout(() => {
+      this.ready = true;
+    }, 2000)
   }
 
   ngDoCheck() {

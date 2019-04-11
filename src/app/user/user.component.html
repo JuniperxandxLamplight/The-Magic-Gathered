@@ -6,5 +6,5 @@
 </p>
 <button (click)="getCurrentUserOb()">CurrentUser Object</button>
 
-<app-library [currentUser]="currentUser"></app-library>
+<app-library *ngIf="ready" [currentUser]="currentUser"></app-library>
 <!-- <app-deck-list [user]="currentUser"></app-deck-list> -->
