@@ -21,6 +21,8 @@ import { MtgCardsService } from "../mtg-cards.service"
 export class SearchDataComponent implements OnInit {
   searchTerms: any[] = [];
   public formattedSearchTerms: string = "";
+  public inputTerm: string = 't:';
+  public inputName: string = '!';
   nameVsSup: string = "";
   cardPage: any[] = [];
   cardList: any[] = [];
@@ -56,8 +58,6 @@ export class SearchDataComponent implements OnInit {
      this.trans = "transform"
    } else {
      this.trans = "transform-active"
-     // console.log(this.window.pageYOffset)
-     // console.log(trans)
    }
 
 
@@ -163,27 +163,63 @@ export class SearchDataComponent implements OnInit {
         }
       });
 
+      //check for input term and add it to the query
       paramString += ')';
+      if(this.inputTerm !== 't:') {
+        paramString += this.inputTerm;
+      }
+
       console.log(paramString);
       this.formattedSearchTerms = paramString;
 
     }
 
     getSearchTerm(term) {
-      console.log(term);
+      if(term) {
+        this.inputTerm += term.toString();
+        console.log(term);
+        console.log(term.type);
+        console.log(this.inputTerm);
+        console.log(this.formattedSearchTerms);
+      } else {
+        console.log(false);
+        return false
+      }
     }
 
-    getMTGcards() {
+    getMTGcards(term) {
+     this.getSearchTerm(term)
      this.formatQuery(this.searchTerms);
-     this.cardsService.getMTGCardList(this.formattedSearchTerms).subscribe(response => {
-        this.cardPage = response.json();
-        this.cardList = [].concat.apply([], response.json().data);
-        console.log('cardPage', this.cardPage);
-        console.log('cardPage has more', this.cardPage['has_more']);
-        console.log('cardPage next_page', this.cardPage['next_page']);
-        console.log('cardList', this.cardList);
-      });
-    }
+
+     if(this.formattedSearchTerms === '()' && this.getSearchTerm(this.inputTerm) === false) {
+
+       this.cardsService.getPlainMTGCardList().subscribe(response => {
+          this.cardPage = response.json();
+          this.cardList = [].concat.apply([], response.json().data);
+          console.log('cardPage', this.cardPage);
+          console.log('cardPage has more', this.cardPage['has_more']);
+          console.log('cardPage next_page', this.cardPage['next_page']);
+          console.log('cardList', this.cardList);
+        });
+     } else {
+         this.cardsService.getMTGCardList(this.formattedSearchTerms).subscribe(response => {
+           this.cardPage = response.json();
+           this.cardList = [].concat.apply([], response.json().data);
+           console.log('cardPage', this.cardPage);
+           console.log('cardPage has more', this.cardPage['has_more']);
+           console.log('cardPage next_page', this.cardPage['next_page']);
+           console.log('cardList', this.cardList);
+         });
+       }
+     }
+
+
+
+
+
+
+
+
 
     getNextPage(){
       let nextPage = this.cardPage['next_page'];

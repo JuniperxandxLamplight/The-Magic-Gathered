@@ -13,6 +13,10 @@ export class MtgCardsService {
     return this.http.get(`https://api.scryfall.com/cards/search?lang=en&q=${paramaters}`);
   }
 
+  getPlainMTGCardList() {
+    return this.http.get(`https://api.scryfall.com/cards?lang=en`);
+  }
+
   getMTGNextPage(nextPage) {
     return this.http.get(`${nextPage}`);
   }
