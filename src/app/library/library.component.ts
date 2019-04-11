@@ -13,13 +13,12 @@ import { UserService } from '../user.service';
   providers: [UserService]
 })
 export class LibraryComponent implements OnInit {
-  currentUser: User;
+  @Input() currentUser: User;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.currentUser = this.userService.getCurrentUser();
+    // this.userService.getCurrentUser();
     console.log(this.currentUser);
-
   }
 
 }

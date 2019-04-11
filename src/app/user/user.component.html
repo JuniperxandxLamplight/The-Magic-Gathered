@@ -2,8 +2,9 @@
 <button (click)="logout()">Log out</button>
 <p>
   user works!
+  <!-- {{currentUser}} -->
 </p>
 <button (click)="getCurrentUserOb()">CurrentUser Object</button>
 
-<app-library></app-library>
+<app-library [currentUser]="currentUser"></app-library>
 <!-- <app-deck-list [user]="currentUser"></app-deck-list> -->

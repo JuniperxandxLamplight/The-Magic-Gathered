@@ -31,8 +31,8 @@ export class UserComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  getCurrentUserOb() {
+  async getCurrentUserOb() {
     this.currentUser = this.userService.getCurrentUser();
-    console.log(this.currentUser);
+    await console.log(this.currentUser);
   }
 }
