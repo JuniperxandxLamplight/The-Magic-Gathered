@@ -11,11 +11,13 @@ export class DeckListComponent implements OnInit {Test: any;
   testList: any[] = [];
   nameList: any[] = [];
   colorList: any[] = [];
+  @Input() data;
   // @Input() user: User;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.data);
     for(let i=0; i<10; i++){
       this.testList.push(
         this.Test = {

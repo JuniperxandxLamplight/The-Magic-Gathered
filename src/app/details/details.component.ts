@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as firebase from "firebase";
 import { UserService } from '../user.service';
 
@@ -23,6 +23,7 @@ export class DetailsComponent implements OnInit {
     oracle_text: "Menace\nAt the beginning of your precombat main ..."
   }
   currentUser;
+  @Input() card;
 
   constructor(public userService: UserService) { }
 

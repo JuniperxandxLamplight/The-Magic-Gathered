@@ -1,46 +1,46 @@
-<img src="../../assets/images/placeholder-card.png" alt="card image">
+<img src="card.image" alt="card image">
 <div class="details">
   <div class="left">
     <h5>Name</h5>
-    <p [className]="color(Test)">{{Test.name}}</p>
+    <p [className]="color(Test)">{{card.name}}</p>
   </div>
   <div class="right">
     <h5>Rarity</h5>
-    <p [className]="color(Test)">{{Test.rarity}}</p>
+    <p [className]="color(card)">{{card.rarity}}</p>
   </div>
   <div>
     <h5>Colors</h5>
-    <p [className]="color(Test)">{{colorTranslate(Test)}}</p>
+    <p [className]="color(card)">{{colorTranslate(card)}}</p>
   </div>
   <div id="set" class="right">
     <h5>Set</h5>
-    <p [className]="color(Test)">{{Test.set_name}}</p>
+    <p [className]="color(card)">{{card.set_name}}</p>
   </div>
   <div class="left">
     <h5>Mana Cost</h5>
-    <p [className]="color(Test)">{{Test.mana_cost}}</p>
+    <p [className]="color(card)">{{card.mana_cost}}</p>
   </div>
   <div class="right">
     <h5>Current Price</h5>
-    <p [className]="color(Test)">{{Test.prices.usd}}</p>
+    <p [className]="color(card)">{{card.prices.usd}}</p>
   </div>
   <div class="left powerTough">
     <div>
       <h5>Power</h5>
-      <p [className]="color(Test)">{{Test.power}}</p>
+      <p [className]="color(card)">{{card.power}}</p>
     </div>
     <div class="right">
       <h5>Toughness</h5>
-      <p [className]="color(Test)">{{Test.toughness}}</p>
+      <p [className]="color(card)">{{card.toughness}}</p>
     </div>
   </div>
   <div class="left large">
     <h5>Type</h5>
-    <p [className]="color(Test)">{{Test.type_line}}</p>
+    <p [className]="color(card)">{{card.type_line}}</p>
   </div>
   <div class="large">
     <h5>Text</h5>
-    <p [className]="color(Test)">{{Test.oracle_text}}</p>
+    <p [className]="color(card)">{{card.oracle_text}}</p>
   </div>
 <div class="addButtons">
   <button type="button" name="button" (click)="addCardToLibrary('card')">Add to Library</button>

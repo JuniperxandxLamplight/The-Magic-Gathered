@@ -204,7 +204,7 @@ export class SearchDataComponent implements OnInit {
 
     formatCardList() {
       this.cardList.forEach((ob) => {
-        this.formattedCardList.push(new Card(ob.name, ob.colors, ob.type_line, ob.oracle_text, ob.rarity, ob.set_name)
+        this.formattedCardList.push(new Card(ob.name, ob.colors, ob.type_line, ob.oracle_text, ob.rarity, ob.set_name, ob.image_uris.normal)
         )
       })
       console.log(this.formattedCardList);
